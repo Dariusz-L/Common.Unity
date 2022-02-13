@@ -22,7 +22,7 @@ namespace MLU.Commands
             if (!_target)
                 _target = _getTargetGO?.Invoke().transform;
 
-            FadeImageFunctions.LerpPosition2D(
+            LerpFunctions.LerpPosition2D(
                 _target, _targetPosition, _durationSeconds, _lerpFunctionType,
                 StartCoroutine, _onDone.ToAction());
         }

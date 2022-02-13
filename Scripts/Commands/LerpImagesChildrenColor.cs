@@ -9,10 +9,10 @@ using static MLU.Commands.SerializableCallbacks;
 
 namespace MLU.Commands
 {
-    public class LerpImageColor : MonoBehaviour
+    public class LerpImagesChildrenColor : MonoBehaviour
     {
-        [SerializeField] private GetGameObject _getImageGO;
-        [SerializeField] private Image _imageToFade;
+        [SerializeField] private GetGameObject _getImagesParent;
+        [SerializeField] private GameObject _imagesParent;
         [SerializeField] private Color _targetColor;
         [SerializeField] private float _durationSeconds;
         [SerializeField] private List<UnityEvent> _onDone;
@@ -20,12 +20,15 @@ namespace MLU.Commands
 
         public void Execute()
         {
-            if (!_imageToFade)
-                _imageToFade = _getImageGO?.Invoke().GetComponent<Image>();
+            if (!_imagesParent)
+                _imagesParent = _getImagesParent?.Invoke();
 
-            LerpFunctions.LerpColor(
-                _imageToFade, _targetColor, _durationSeconds, _lerpFunctionType,
-                StartCoroutine, _onDone.ToAction());
+            var images = _imagesParent.GetComponentsInChildren<Image>();
+
+            foreach (var image in images)
+                LerpFunctions.LerpColor(
+                    image, _targetColor, _durationSeconds, _lerpFunctionType,
+                    StartCoroutine, _onDone.ToAction());
         }
     }
 }

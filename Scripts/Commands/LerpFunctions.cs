@@ -7,8 +7,28 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.MLU.Commands
 {
-    public class FadeImageFunctions
+    public class LerpFunctions
     {
+        public static void LerpFill(
+            Image image,
+            float targetValue,
+            float durationSeconds,
+            LerpingFunctions.LerpFunctionType type,
+            Func<IEnumerator, Coroutine> startCoroutine,
+            Action onDone)
+        {
+            LerpingFunctions.Lerp(
+                Mathf.Lerp,
+                UnityGetSetFuncs.GetImageFillFunc(image),
+                UnityGetSetFuncs.SetImageFillAction(image),
+                targetValue,
+                durationSeconds,
+                startCoroutine,
+                UnityGlobalStateFuncs.GetDeltaTime,
+                LerpingFunctions.GetLerpFunction(type),
+                onDone);
+        }
+
         public static void LerpPosition2D(
             Transform transform,
             Vector2 targetPosition,

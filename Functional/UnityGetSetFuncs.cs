@@ -18,5 +18,11 @@ namespace Common.Unity.Functional
 
         public static Func<Color> GetImageColorFunc(Image image) =>
             () => image.color;
+
+        public static Action<float> SetImageFillAction(Image image) =>
+            color => image.fillAmount = color;
+
+        public static Func<float> GetImageFillFunc(Image image) =>
+            () => image.fillAmount;
     }
 }
