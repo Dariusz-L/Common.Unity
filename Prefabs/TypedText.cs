@@ -31,7 +31,7 @@ namespace Autonomous
             {
                 _textComponent.text = _text.Substring(0, _currentTextIndex);
                 _currentTextIndex++;
-                if (_currentTextIndex >= _text.Length - 1)
+                if (_currentTextIndex > _text.Length)
                 {
                     if (_looped)
                         _currentTextIndex = 1;
