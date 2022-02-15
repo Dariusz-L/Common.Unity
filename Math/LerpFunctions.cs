@@ -1,9 +1,13 @@
-﻿using Common.Algorithms;
+﻿using Common.Domain.Collections;
+using Common.Infrastructure.Unity.GameObjects;
+using Common.System.Math;
 using Common.Unity.Functional;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Common.System.Math.LerpingFunctions;
 
 namespace Assets.Scripts.MLU.Commands
 {
@@ -13,7 +17,7 @@ namespace Assets.Scripts.MLU.Commands
             Image image,
             float targetValue,
             float durationSeconds,
-            LerpingFunctions.LerpFunctionType type,
+            LerpFunctionType type,
             Func<IEnumerator, Coroutine> startCoroutine,
             Action onDone)
         {
@@ -33,7 +37,7 @@ namespace Assets.Scripts.MLU.Commands
             Transform transform,
             Vector2 targetPosition,
             float durationSeconds,
-            LerpingFunctions.LerpFunctionType type,
+            LerpFunctionType type,
             Func<IEnumerator, Coroutine> startCoroutine,
             Action onDone)
         {
@@ -50,23 +54,52 @@ namespace Assets.Scripts.MLU.Commands
         }
 
         public static void LerpColor(
-            Image image,
+            Graphic image,
             Color targetColor,
             float durationSeconds,
-            LerpingFunctions.LerpFunctionType type,
+            LerpFunctionType type,
             Func<IEnumerator, Coroutine> startCoroutine,
             Action onDone)
         {
             LerpingFunctions.Lerp(
                 Color.Lerp,
-                UnityGetSetFuncs.GetImageColorFunc(image),
-                UnityGetSetFuncs.SetImageColorAction(image),
+                UnityGetSetFuncs.GetGraphicColorFunc(image),
+                UnityGetSetFuncs.SetGraphicColorAction(image),
                 targetColor,
                 durationSeconds,
                 startCoroutine,
                 UnityGlobalStateFuncs.GetDeltaTime,
                 LerpingFunctions.GetLerpFunction(type),
                 onDone);
+        }
+
+        public static void LerpVisibleAndChildrenM(
+            IEnumerable<GameObject> goWithVisibleOrChildrenEnumerable,
+            Color targetColor,
+            float durationSeconds,
+            LerpFunctionType type,
+            Func<IEnumerator, Coroutine> startCoroutine,
+            Action onDone)
+        {
+            goWithVisibleOrChildrenEnumerable
+                .ForEach(go => LerpVisibleAndChildrenM(go, targetColor, durationSeconds, type, startCoroutine, onDone));
+        }
+
+        public static void LerpVisibleAndChildrenM(
+            GameObject goWithVisibleOrChildren,
+            Color targetColor,
+            float durationSeconds,
+            LerpFunctionType type,
+            Func<IEnumerator, Coroutine> startCoroutine,
+            Action onDone)
+        {
+            var visibleComponents =
+                goWithVisibleOrChildren.GetThisAndNestedChildren<Graphic>();
+
+            foreach (var visible in visibleComponents)
+                LerpFunctions.LerpColor(
+                    visible, targetColor, durationSeconds, type,
+                    startCoroutine, onDone);
         }
 
         public static void ToBlack(Image image)

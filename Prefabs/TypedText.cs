@@ -26,6 +26,14 @@ namespace Autonomous
                 .RunAsCoroutineRepeated(() => _typeDurationSeconds, StartCoroutine);
         }
 
+        public void StopTyping()
+        {
+            if (!_coroutine.IsNull())
+                StopCoroutine(_coroutine);
+
+            _coroutine = null;
+        }
+
         private Action GetTypeTextAction() =>
             () =>
             {

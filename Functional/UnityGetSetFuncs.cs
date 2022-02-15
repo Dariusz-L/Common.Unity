@@ -13,11 +13,11 @@ namespace Common.Unity.Functional
         public static Func<Vector2> GetTransformPosition2DFunc(Transform transform) =>
             () => transform.position;
 
-        public static Action<Color> SetImageColorAction(Image image) =>
-            color => image.color = color;
+        public static Action<Color> SetGraphicColorAction(Graphic graphic) =>
+            color => graphic.color = color;
 
-        public static Func<Color> GetImageColorFunc(Image image) =>
-            () => image.color;
+        public static Func<Color> GetGraphicColorFunc(Graphic graphic) =>
+            () => graphic.color;
 
         public static Action<float> SetImageFillAction(Image image) =>
             color => image.fillAmount = color;

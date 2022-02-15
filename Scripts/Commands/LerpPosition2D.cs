@@ -3,7 +3,7 @@ using Common.Unity.Functional;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using static Common.Algorithms.LerpingFunctions;
+using static Common.System.Math.LerpingFunctions;
 using static MLU.Commands.SerializableCallbacks;
 
 namespace MLU.Commands
