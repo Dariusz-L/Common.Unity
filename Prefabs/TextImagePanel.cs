@@ -36,5 +36,8 @@ namespace Autonomous
             _textRT.pivot = new Vector2(0, 0.5f);
             _textRT.anchoredPosition = new Vector2(0, 0);
         }
+
+        public Image Image => _image;
+        public Text Text => _text;
     }
 }

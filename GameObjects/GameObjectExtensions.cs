@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Domain.Functional;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -24,6 +25,22 @@ namespace Common.Infrastructure.Unity.GameObjects
         {
             gameObject.SetActive(false);
             GameObject.Destroy(gameObject);
+        }
+
+        public static T GetOrAddComponent<T>(this GameObject go)
+            where T : Component
+        {
+            var component = go.GetComponent<T>();
+            if (component)
+                return component;
+
+            return go.AddComponent<T>();
+        }
+
+        public static T GetOrAddComponent<T>(this Component component)
+            where T : Component
+        {
+            return component.gameObject.GetOrAddComponent<T>();
         }
 
         public static IEnumerable<Transform> Instantiate(this IEnumerable<Transform> prefabs, Transform parent)
