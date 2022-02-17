@@ -13,6 +13,50 @@ namespace Assets.Scripts.MLU.Commands
 {
     public class LerpFunctions
     {
+        public static void LerpAnimatorSpeed(
+           Animator animator,
+           float targetValue,
+           float durationSeconds,
+           LerpFunctionType type,
+           Func<IEnumerator, Coroutine> startCoroutine,
+           Action onDone)
+        {
+            LerpingFunctions.Lerp(
+                Mathf.Lerp,
+                UnityGetSetFuncs.GetAnimatorSpeedFunc(animator),
+                UnityGetSetFuncs.SetAnimatorSpeedAction(animator),
+                targetValue,
+                durationSeconds,
+                startCoroutine,
+                UnityGlobalStateFuncs.GetDeltaTime,
+                LerpingFunctions.GetLerpFunction(type),
+                onDone);
+        }
+
+        public static void LerpNestedAnimatorSpeed(
+           GameObject animator,
+           float targetValue,
+           float durationSeconds,
+           LerpFunctionType type,
+           Func<IEnumerator, Coroutine> startCoroutine,
+           Action onDone)
+        {
+            var nestedComponents =
+                animator.GetThisAndNestedChildren<Animator>();
+
+            foreach (var child in nestedComponents)
+                LerpingFunctions.Lerp(
+                    Mathf.Lerp,
+                    UnityGetSetFuncs.GetAnimatorSpeedFunc(child),
+                    UnityGetSetFuncs.SetAnimatorSpeedAction(child),
+                    targetValue,
+                    durationSeconds,
+                    startCoroutine,
+                    UnityGlobalStateFuncs.GetDeltaTime,
+                    LerpingFunctions.GetLerpFunction(type),
+                    onDone);
+        }
+
         public static void LerpCameraSize(
             Camera camera,
             float targetValue,

@@ -7,28 +7,34 @@ namespace Common.Unity.Functional
 {
     public static class UnityGetSetFuncs
     {
-        public static Action<Vector2> SetTransformPosition2DAction(Transform transform) =>
-                value => transform.SetPosition(value);
+        public static Action<Vector2> SetTransformPosition2DAction(Transform component) =>
+                value => component.SetPosition(value);
 
-        public static Func<Vector2> GetTransformPosition2DFunc(Transform transform) =>
-            () => transform.position;
+        public static Func<Vector2> GetTransformPosition2DFunc(Transform component) =>
+            () => component.position;
 
-        public static Action<Color> SetGraphicColorAction(Graphic graphic) =>
-            value => graphic.color = value;
+        public static Action<Color> SetGraphicColorAction(Graphic component) =>
+            value => component.color = value;
 
-        public static Func<Color> GetGraphicColorFunc(Graphic graphic) =>
-            () => graphic.color;
+        public static Func<Color> GetGraphicColorFunc(Graphic component) =>
+            () => component.color;
 
-        public static Action<float> SetImageFillAction(Image image) =>
-            value => image.fillAmount = value;
+        public static Action<float> SetImageFillAction(Image component) =>
+            value => component.fillAmount = value;
 
-        public static Func<float> GetImageFillFunc(Image image) =>
-            () => image.fillAmount;
+        public static Func<float> GetImageFillFunc(Image component) =>
+            () => component.fillAmount;
 
-        public static Action<float> SetCameraSizeAction(UnityEngine.Camera camera) =>
-            value => camera.orthographicSize = value;
+        public static Action<float> SetCameraSizeAction(UnityEngine.Camera component) =>
+            value => component.orthographicSize = value;
 
-        public static Func<float> GetCameraSizeFunc(UnityEngine.Camera camera) =>
-            () => camera.orthographicSize;
+        public static Func<float> GetCameraSizeFunc(UnityEngine.Camera component) =>
+            () => component.orthographicSize;
+
+        public static Action<float> SetAnimatorSpeedAction(Animator component) =>
+            value => component.speed = value;
+
+        public static Func<float> GetAnimatorSpeedFunc(Animator component) =>
+            () => component.speed;
     }
 }
