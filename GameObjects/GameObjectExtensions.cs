@@ -1,4 +1,5 @@
-﻿using Common.Domain.Functional;
+﻿using Common.Domain.Collections;
+using Common.Domain.Functional;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,14 @@ namespace Common.Infrastructure.Unity.GameObjects
             where T : Component
         {
             return component.gameObject.GetOrAddComponent<T>();
+        }
+
+        public static void ForEachNested<T>(this GameObject gameObject, Action<T> action)
+        {
+            var nestedGraphics =
+                gameObject.GetThisAndNestedChildren<T>();
+
+            nestedGraphics.ForEach(g => action(g));
         }
 
         public static IEnumerable<Transform> Instantiate(this IEnumerable<Transform> prefabs, Transform parent)

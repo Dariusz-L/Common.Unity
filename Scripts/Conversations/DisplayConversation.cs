@@ -36,9 +36,11 @@ namespace MLU.Commands
 
         public void Next()
         {
-            _index.IncreaseBy(1, 0, _conversation.Phrases.Count - 1);
+            _index.IncreaseBy(1, 0, _conversation.Phrases.Count - 1, loop: false);
             SetStringRef();
         }
+
+        public bool IsEnd() => _index == _conversation.Phrases.Count - 1;
 
         private void SetStringRef()
         {
