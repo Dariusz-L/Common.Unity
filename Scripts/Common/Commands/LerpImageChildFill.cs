@@ -29,7 +29,7 @@ namespace MLU.Commands
                 .Where(i => i.type == Image.Type.Filled)
                 .FirstOrDefault();
 
-            LerpFunctions.LerpFill(
+            LerpFunctions.LerpImageFill(
                 image, _targetValue, _durationSeconds, _lerpFunctionType,
                 StartCoroutine, _onDone.ToAction());
         }

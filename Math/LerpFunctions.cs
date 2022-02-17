@@ -13,7 +13,27 @@ namespace Assets.Scripts.MLU.Commands
 {
     public class LerpFunctions
     {
-        public static void LerpFill(
+        public static void LerpCameraSize(
+            Camera camera,
+            float targetValue,
+            float durationSeconds,
+            LerpFunctionType type,
+            Func<IEnumerator, Coroutine> startCoroutine,
+            Action onDone)
+        {
+            LerpingFunctions.Lerp(
+                Mathf.Lerp,
+                UnityGetSetFuncs.GetCameraSizeFunc(camera),
+                UnityGetSetFuncs.SetCameraSizeAction(camera),
+                targetValue,
+                durationSeconds,
+                startCoroutine,
+                UnityGlobalStateFuncs.GetDeltaTime,
+                LerpingFunctions.GetLerpFunction(type),
+                onDone);
+        }
+
+        public static void LerpImageFill(
             Image image,
             float targetValue,
             float durationSeconds,

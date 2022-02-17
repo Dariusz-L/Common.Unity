@@ -1,5 +1,4 @@
-﻿using Common.Unity.Math;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Common.Unity.Camera
 {
