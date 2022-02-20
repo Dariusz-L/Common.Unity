@@ -1,10 +1,12 @@
 ﻿using Common.Unity.Inspector;
 using UnityEngine;
+using static MLU.Commands.SerializableCallbacks;
 
 namespace MLU.Commands
 {
     public class SpawnPrefabInParentTransform : MonoBehaviour
     {
+        [SerializeField] private GetGameObject _getParentGO;
         [SerializeField] private Transform _parent;
         [SerializeField] private GameObject _prefab;
         [SerializeField] private bool _enabled = true;
@@ -15,6 +17,9 @@ namespace MLU.Commands
 
         public GameObject Get()
         {
+            if (!_parent)
+                _parent = _getParentGO?.Invoke()?.transform;
+
             if (!_spawned)
             {
                 if (!_parent)
