@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Common.Unity.Animating
 {
-    public class MLUAnimator : MonoBehaviour
+    public class Platform2DCharacterAnimator : MonoBehaviour
     {
         [SerializeField] private List<Animator> _animators;
         [SerializeField] private GetVelocity _getVelocity;
