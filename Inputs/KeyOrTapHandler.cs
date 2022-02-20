@@ -22,13 +22,13 @@ namespace Common.Unity.Inputs
             if (Input.GetKeyUp(_key))
                 _onUp?.Invoke();
 
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0) && Input.touchSupported)
                 _onUp?.Invoke();
 
             if (Input.GetKeyDown(_key))
                 _onDown?.Invoke();
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && Input.touchSupported)
                 _onDown?.Invoke();
         }
     }
