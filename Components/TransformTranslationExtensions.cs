@@ -32,6 +32,14 @@ namespace Assets.Scripts.Common.Unity.Components
             transform.position = position;
         }
 
+        public static void SetLocalPosition(this Transform transform, Vector2 value)
+        {
+            var position = transform.localPosition;
+            position.x = value.x;
+            position.y = value.y;
+            transform.localPosition = position;
+        }
+
         public static void SetX(this Transform transform, float value)
         {
             var position = transform.position;
