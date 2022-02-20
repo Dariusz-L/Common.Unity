@@ -36,5 +36,20 @@ namespace Common.Unity.Functional
 
         public static Func<float> GetAnimatorSpeedFunc(Animator component) =>
             () => component.speed;
+
+        public static Action<float> SetCurrentAnimationTimeAction(Animator component) 
+        {
+            int animHash = component.GetCurrentAnimatorStateInfo(0).tagHash;
+            return value => component.Play(animHash, 0, value);
+        }
+
+        public static Func<float> GetCurrentAnimationTimeFunc(Animator component) =>
+            () =>
+            {
+                float normalizedTime = component.GetCurrentAnimatorStateInfo(0).normalizedTime;
+                float loopProgress = normalizedTime % 1;
+
+                return loopProgress;
+            };
     }
 }

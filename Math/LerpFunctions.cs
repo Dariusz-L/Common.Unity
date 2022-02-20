@@ -5,6 +5,7 @@ using Common.Unity.Functional;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using static Common.System.Math.LerpingFunctions;
@@ -49,6 +50,32 @@ namespace Assets.Scripts.MLU.Commands
                     Mathf.Lerp,
                     UnityGetSetFuncs.GetAnimatorSpeedFunc(child),
                     UnityGetSetFuncs.SetAnimatorSpeedAction(child),
+                    targetValue,
+                    durationSeconds,
+                    startCoroutine,
+                    UnityGlobalStateFuncs.GetDeltaTime,
+                    LerpingFunctions.GetLerpFunction(type),
+                    onDone);
+        }
+
+        public static void LerpNestedAnimatorTime(
+           GameObject animator,
+           float targetValue,
+           float durationSeconds,
+           LerpFunctionType type,
+           Func<IEnumerator, Coroutine> startCoroutine,
+           Action onDone)
+        {
+            var nestedComponents =
+                animator.GetThisAndNestedChildren<Animator>();
+
+            nestedComponents.ForEach((a, i) => a.speed = 0);
+
+            foreach (var child in nestedComponents)
+                LerpingFunctions.Lerp(
+                    Mathf.Lerp,
+                    UnityGetSetFuncs.GetCurrentAnimationTimeFunc(child),
+                    UnityGetSetFuncs.SetCurrentAnimationTimeAction(child),
                     targetValue,
                     durationSeconds,
                     startCoroutine,
