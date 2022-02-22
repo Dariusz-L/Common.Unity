@@ -1,5 +1,4 @@
-﻿using Common.Unity.Inspector;
-using UnityEngine;
+﻿using UnityEngine;
 using static MLU.Commands.SerializableCallbacks;
 
 namespace MLU.Commands
@@ -17,16 +16,16 @@ namespace MLU.Commands
 
         public GameObject Get()
         {
+            if (_spawned)
+                return _spawned;
+
             if (!_parent)
                 _parent = _getParentGO?.Invoke()?.transform;
 
-            if (!_spawned)
-            {
-                if (!_parent)
-                    _spawned = Instantiate(_prefab);
-                else
-                    _spawned = Instantiate(_prefab, _parent);
-            }
+            if (!_parent)
+                _spawned = Instantiate(_prefab);
+            else
+                _spawned = Instantiate(_prefab, _parent);
 
             _spawned.SetActive(_enabled);
 
