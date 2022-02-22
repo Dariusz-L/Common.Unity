@@ -36,6 +36,11 @@ namespace Common.Unity.Camera
             transform.position = new Vector3(_position.x, _position.y, -10f);
         }
 
+        public void SetTarget(GameObject target)
+        {
+            _target = target.transform;
+        }
+
         private void LerpCameraPositionToTarget()
         {
             float deltaTime = Time.deltaTime;
