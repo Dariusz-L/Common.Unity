@@ -11,6 +11,11 @@ namespace Assets.Scripts.Common.Unity.Scripts.Inputs
         [SerializeField] private bool _smooth = true;
         [SerializeField] private AxisType _axisType = AxisType.Horizontal;
 
+        public void SetInput(AxisHandler_OnInput onInput)
+        {
+
+        }
+
         private void Update()
         {
             string axisName = GetAxisName(_axisType);

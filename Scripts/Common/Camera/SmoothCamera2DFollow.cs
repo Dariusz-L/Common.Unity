@@ -5,7 +5,7 @@ namespace Common.Unity.Camera
     public class SmoothCamera2DFollow : MonoBehaviour
     {
         [Header("Camera Follow")]
-        [SerializeField] private Transform _target;
+        [SerializeField] private GameObject _target;
         [SerializeField] private int _xOffset = 0;
         [SerializeField] private int _yOffset = 0;
         [SerializeField] private float _dampTime = .4f;
@@ -15,13 +15,7 @@ namespace Common.Unity.Camera
         [SerializeField] private int _minY, _maxY, _minX, _maxX;
 
         private Vector2 _position;
-
-        private void Start()
-        {
-            if (!_target)
-                _target = GameObject.FindObjectOfType<CameraFollowTarget>().transform;
-        }
-
+        
         private void Update()
         {
             if (!_target)
@@ -38,7 +32,7 @@ namespace Common.Unity.Camera
 
         public void SetTarget(GameObject target)
         {
-            _target = target.transform;
+            _target = target;
         }
 
         private void LerpCameraPositionToTarget()
