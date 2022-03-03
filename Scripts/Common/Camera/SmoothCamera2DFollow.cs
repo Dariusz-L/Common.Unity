@@ -15,7 +15,12 @@ namespace Common.Unity.Camera
         [SerializeField] private int _minY, _maxY, _minX, _maxX;
 
         private Vector2 _position;
-        
+
+        private void OnEnable()
+        {
+            _position = _target.transform.position;
+        }
+
         private void Update()
         {
             if (!_target)
