@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Common.Basic.Math.LerpingFunctions;
 
-namespace Common
+namespace Common.Unity.Components
 {
     public class LerpFunctions
     {

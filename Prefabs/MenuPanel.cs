@@ -1,4 +1,4 @@
-using Assets.Scripts.MLU.Commands;
+using Common.Unity.Components;
 using UnityEngine;
 using UnityEngine.UI;
 using static Common.Basic.Math.LerpingFunctions;

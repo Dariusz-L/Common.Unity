@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.MLU.Commands;
+﻿using Common.Unity.Components;
 using Common.Unity.Events;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +25,5 @@ namespace MLU.Commands
                 _target, _targetPosition, _durationSeconds, _lerpFunctionType,
                 StartCoroutine, _onDone.ToAction());
         }
-
-        
     }
 }
