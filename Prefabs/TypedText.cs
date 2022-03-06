@@ -1,5 +1,5 @@
-using Common;
 using Common.Basic.Functional;
+using Common.Unity.Coroutines;
 using System;
 using UnityEngine;
 using UnityEngine.UI;

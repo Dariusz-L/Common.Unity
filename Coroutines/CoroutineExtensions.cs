@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Common
+namespace Common.Unity.Coroutines
 {
     public static class CoroutineExtensions
     {
