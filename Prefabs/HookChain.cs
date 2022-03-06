@@ -40,21 +40,18 @@ namespace MLU
 
             int count = (int) (distance / _diffExtent) + 1;
             int countDiff = count - _objectPool.ActiveCount;
-            if (countDiff != 0)
-            {
-                if (countDiff < 0)
-                    countDiff.ForEach(() => _objectPool.DestroyLast());
+            if (countDiff < 0)
+                countDiff.ForEach(() => _objectPool.DestroyLast());
 
-                if (countDiff > 0)
-                    countDiff.ForEach(() => 
-                    {
-                        var _lastPos = _objectPool.LastSpawned.transform.localPosition;
+            if (countDiff > 0)
+                countDiff.ForEach(() => 
+                {
+                    var _lastPos = _objectPool.LastSpawned.transform.localPosition;
 
-                        var spawned = _objectPool.Spawn(active: true);
-                        spawned.transform.SetLocalPosition(_lastPos);
-                        spawned.transform.TranslateY(_diffExtent * Math.Sign(distance));
-                    });
-            }
+                    var spawned = _objectPool.Spawn(active: true);
+                    spawned.transform.SetLocalPosition(_lastPos);
+                    spawned.transform.TranslateY(_diffExtent * Math.Sign(distance));
+                });
         }
 
         [Serializable] public class GetExtents : SerializableCallback<float> {}
