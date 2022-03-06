@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Common.Unity.Components
+namespace Common.Unity.Components
 {
     public static class TransformScaleExtensions
     {
@@ -15,7 +14,7 @@ namespace Assets.Scripts.Common.Unity.Components
         public static void ScalePositiveX(this Transform transform)
         {
             var scale = transform.localScale;
-            scale.x = Math.Abs(scale.x);
+            scale.x = System.Math.Abs(scale.x);
             transform.localScale = scale;
         }
 
@@ -28,7 +27,7 @@ namespace Assets.Scripts.Common.Unity.Components
         public static void ScaleNegativeX(this Transform transform)
         {
             var scale = transform.localScale;
-            scale.x = -Math.Abs(scale.x);
+            scale.x = -System.Math.Abs(scale.x);
             transform.localScale = scale;
         }
 

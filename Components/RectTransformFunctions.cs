@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Common.Unity.Components
+namespace Common.Unity.Components
 {
     public static class RectTransformFunctions
     {

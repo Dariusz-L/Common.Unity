@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Common.Unity.Components;
+﻿using Common.Unity.Components;
 using Common.Unity.Inspector;
 using System;
 using UnityEngine;

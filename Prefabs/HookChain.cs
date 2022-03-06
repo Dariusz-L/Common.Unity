@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts;
-using Assets.Scripts.Common.Unity.Components;
+using Common.Unity.Components;
 using Common.Basic.Collections;
 using Common.Unity.Math;
 using System;

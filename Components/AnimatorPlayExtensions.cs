@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Common.Unity.Animating
+namespace Common.Unity.Components
 {
     public static class AnimatorPlayExtensions
     {

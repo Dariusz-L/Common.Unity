@@ -1,8 +1,7 @@
 using Assets.Scripts;
-using Assets.Scripts.Common.Unity.Components;
 using Common;
 using Common.Basic.Collections;
-using Common.Basic.Collections;
+using Common.Unity.Components;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
