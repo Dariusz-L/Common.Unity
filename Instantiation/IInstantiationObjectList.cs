@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.Basic.Unity.Behaviour
+namespace Common.Unity.Instantiation
 {
     public interface IInstantiationObjectList<out T> : IInstantiationObject<T>
     {

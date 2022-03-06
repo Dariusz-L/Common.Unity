@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Common.Basic.Unity.Behaviour
+namespace Common.Unity.Instantiation
 {
     public static class UnityIOs
     {

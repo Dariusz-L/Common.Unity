@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Common.Basic.Unity.Behaviour
+namespace Common.Unity.Instantiation
 {
     public class InstantiationObjectCast<T> : IInstantiationObject<T>
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static Common.Basic.Unity.Behaviour.UnityIOs;
+using static Common.Unity.Instantiation.UnityIOs;
 
-namespace Common.Basic.Unity.Behaviour
+namespace Common.Unity.Instantiation
 {
     public class InstantiationObjectListScript : MonoBehaviour, IInstantiationObjectList<Transform>
     {

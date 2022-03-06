@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using static Common.Basic.Unity.Behaviour.UnityIOs;
+using static Common.Unity.Instantiation.UnityIOs;
 
 namespace Common.Unity.Scripts.Instantiation
 {

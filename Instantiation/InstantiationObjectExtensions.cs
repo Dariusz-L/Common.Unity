@@ -1,7 +1,7 @@
 ﻿using Common.Unity.GameObjects;
 using UnityEngine;
 
-namespace Common.Basic.Unity.Behaviour
+namespace Common.Unity.Instantiation
 {
     public static class InstantiationObjectExtensions
     {

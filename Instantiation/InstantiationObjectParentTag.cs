@@ -2,7 +2,7 @@
 using Common.Unity.Inspector;
 using UnityEngine;
 
-namespace Common.Basic.Unity.Behaviour
+namespace Common.Unity.Instantiation
 {
     public class InstantiationObjectParentTag<T> : IInstantiationObject<T>
         where T : Component
