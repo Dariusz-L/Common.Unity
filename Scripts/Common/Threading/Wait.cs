@@ -1,4 +1,4 @@
-﻿using Common.Unity.Functional;
+﻿using Common.Unity.Events;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,4 +30,3 @@ namespace MLU.Commands
         }
     }
 }
-;

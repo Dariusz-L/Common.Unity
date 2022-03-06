@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.Events;
 
-namespace Common.Unity.Functional
+namespace Common.Unity.Events
 {
     public static class UnityEventConverters
     {

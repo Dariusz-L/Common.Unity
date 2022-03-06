@@ -1,8 +1,8 @@
+using Common.Unity.Events;
 using System;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
-using static MLU.Commands.SerializableCallbacks;
 
 namespace Autonomous
 {

@@ -1,6 +1,6 @@
+using Common.Unity.Events;
 using UnityEngine;
 using UnityEngine.UI;
-using static MLU.Commands.SerializableCallbacks;
 
 namespace StoryPanel
 {

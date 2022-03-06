@@ -1,11 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
-namespace MLU.Commands
+namespace Common.Unity.Events
 {
-    class SerializableCallbacks
-    {
-        [Serializable] public class GetGameObject : SerializableCallback<GameObject> { }
-        [Serializable] public class GetBool : SerializableCallback<bool> { }
-    }
+    [Serializable] public class GetGameObject : SerializableCallback<GameObject> { }
+    [Serializable] public class GetBool : SerializableCallback<bool> { }
 }

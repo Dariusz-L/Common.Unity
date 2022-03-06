@@ -1,10 +1,6 @@
-﻿using Common.Basic.Collections;
-using Common.Basic.Unity.GameObjects;
-using Common.Unity.Components;
-using System;
+﻿using Common.Unity.Components;
+using Common.Unity.Events;
 using UnityEngine;
-using UnityEngine.UI;
-using static MLU.Commands.SerializableCallbacks;
 
 namespace MLU.Commands
 {

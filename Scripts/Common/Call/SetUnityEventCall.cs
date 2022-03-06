@@ -1,7 +1,7 @@
 using Common.Basic.Reflection;
+using Common.Unity.Events;
 using UnityEngine;
 using UnityEngine.Events;
-using static MLU.Commands.SerializableCallbacks;
 
 namespace Unity.Common.Scripts
 {

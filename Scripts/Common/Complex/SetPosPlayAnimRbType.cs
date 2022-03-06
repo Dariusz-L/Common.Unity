@@ -1,6 +1,6 @@
 ﻿using Common.Unity.Animating;
+using Common.Unity.Events;
 using UnityEngine;
-using static MLU.Commands.SerializableCallbacks;
 
 namespace MLU.Commands
 {

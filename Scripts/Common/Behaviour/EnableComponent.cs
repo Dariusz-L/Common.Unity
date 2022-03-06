@@ -1,5 +1,5 @@
+using Common.Unity.Events;
 using UnityEngine;
-using static MLU.Commands.SerializableCallbacks;
 
 namespace Unity.Common.Scripts
 {

@@ -3,7 +3,6 @@ using Common.Unity.Events;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using static MLU.Commands.SerializableCallbacks;
 
 namespace Unity.Common.Scripts
 {
