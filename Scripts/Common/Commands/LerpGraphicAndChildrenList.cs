@@ -1,11 +1,11 @@
 ﻿using Assets.Scripts.MLU.Commands;
-using Common.Domain.Collections;
+using Common.Basic.Collections;
 using Common.Unity.Events;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using static Common.System.Math.LerpingFunctions;
+using static Common.Basic.Math.LerpingFunctions;
 using static MLU.Commands.SerializableCallbacks;
 
 namespace MLU.Commands

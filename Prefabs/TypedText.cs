@@ -1,5 +1,5 @@
 using Common;
-using Common.Domain.Functional;
+using Common.Basic.Functional;
 using System;
 using UnityEngine;
 using UnityEngine.UI;

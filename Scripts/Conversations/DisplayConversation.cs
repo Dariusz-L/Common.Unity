@@ -1,6 +1,6 @@
 ﻿using Autonomous;
-using Common.Domain.Collections;
-using Common.Infrastructure.Unity.GameObjects;
+using Common.Basic.Collections;
+using Common.Basic.Unity.GameObjects;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using static MLU.Commands.SerializableCallbacks;

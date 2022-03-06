@@ -1,4 +1,4 @@
-using Common.Domain.Collections;
+using Common.Basic.Collections;
 using Common.Unity.Events;
 using System.Linq;
 using UnityEngine;

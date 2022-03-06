@@ -1,4 +1,4 @@
-﻿using Common.Infrastructure.Unity.GameObjects;
+﻿using Common.Basic.Unity.GameObjects;
 using UnityEngine;
 using UnityEngine.UI;
 

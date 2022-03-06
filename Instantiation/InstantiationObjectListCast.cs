@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Common.Infrastructure.Unity.Behaviour
+namespace Common.Basic.Unity.Behaviour
 {
     public class InstantiationObjectListCast<T> : InstantiationObjectCast<T>, IInstantiationObjectList<T>
     {

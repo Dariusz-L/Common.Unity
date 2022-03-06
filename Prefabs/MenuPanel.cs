@@ -1,7 +1,7 @@
 using Assets.Scripts.MLU.Commands;
 using UnityEngine;
 using UnityEngine.UI;
-using static Common.System.Math.LerpingFunctions;
+using static Common.Basic.Math.LerpingFunctions;
 
 namespace Autonomous
 {

@@ -1,4 +1,4 @@
-﻿using Common.Infrastructure.Unity.UI;
+﻿using Common.Basic.Unity.UI;
 using UnityEngine;
 
 namespace MLU.Commands

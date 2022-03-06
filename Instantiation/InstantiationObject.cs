@@ -1,7 +1,7 @@
-﻿using Common.Infrastructure.Unity.GameObjects;
+﻿using Common.Basic.Unity.GameObjects;
 using UnityEngine;
 
-namespace Common.Infrastructure.Unity.Behaviour
+namespace Common.Basic.Unity.Behaviour
 {
     public class InstantiationObject<T> : IInstantiationObject<T>
         where T : Component

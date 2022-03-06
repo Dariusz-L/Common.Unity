@@ -1,9 +1,9 @@
-﻿using Common.Infrastructure.Unity.GameObjects;
+﻿using Common.Basic.Unity.GameObjects;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Common.Infrastructure.Unity.Behaviour
+namespace Common.Basic.Unity.Behaviour
 {
     public class InstantiationObjectList<T> : IInstantiationObjectList<T>
         where T : Component

@@ -1,4 +1,4 @@
-﻿using Common.Domain.Collections;
+﻿using Common.Basic.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

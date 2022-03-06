@@ -1,14 +1,13 @@
-﻿using Common.Domain.Collections;
-using Common.Infrastructure.Unity.GameObjects;
-using Common.System.Math;
+﻿using Common.Basic.Collections;
+using Common.Basic.Unity.GameObjects;
+using Common.Basic.Math;
 using Common.Unity.Functional;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static Common.System.Math.LerpingFunctions;
+using static Common.Basic.Math.LerpingFunctions;
 
 namespace Assets.Scripts.MLU.Commands
 {

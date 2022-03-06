@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using static Common.Infrastructure.Unity.Behaviour.UnityIOs;
+using static Common.Basic.Unity.Behaviour.UnityIOs;
 
-namespace Common.Infrastructure.Unity.Behaviour
+namespace Common.Basic.Unity.Behaviour
 {
     public class InstantiationObjectScript : MonoBehaviour, IInstantiationObject<Transform>
     {

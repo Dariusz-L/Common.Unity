@@ -1,5 +1,5 @@
-﻿using Common.Domain.Collections;
-using Common.Domain.Functional;
+﻿using Common.Basic.Collections;
+using Common.Basic.Functional;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using static Common.System.Math.LerpingFunctions;
+using static Common.Basic.Math.LerpingFunctions;
 using static MLU.Commands.SerializableCallbacks;
 
 namespace MLU.Commands

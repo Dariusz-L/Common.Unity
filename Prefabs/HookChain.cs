@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts;
 using Assets.Scripts.Common.Unity.Components;
-using Common.Domain.Collections;
+using Common.Basic.Collections;
 using Common.Unity.Math;
 using System;
 using UnityEngine;
