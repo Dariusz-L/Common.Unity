@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Common.Unity.Scripts
+namespace Common.Unity.Scripts.Common
 {
     public class TransformMover : MonoBehaviour
     {

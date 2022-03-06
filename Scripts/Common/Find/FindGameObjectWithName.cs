@@ -1,7 +1,7 @@
 ﻿using Common.Basic.Collections;
 using UnityEngine;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Common
 {
     public class FindGameObjectWithName : MonoBehaviour
     {

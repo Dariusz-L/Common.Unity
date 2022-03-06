@@ -1,7 +1,7 @@
 ﻿using Common.Unity.Components;
 using UnityEngine;
 
-namespace Common.Unity.Scripts.Transforms
+namespace Common.Unity.Scripts.Common
 {
     public class TransformTranslator : MonoBehaviour
     {

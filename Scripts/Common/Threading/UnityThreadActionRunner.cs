@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Common.Basic.Unity.Threads
+namespace Common.Unity.Scripts.Common
 {
     public class UnityThreadActionRunner : MonoBehaviour
     {

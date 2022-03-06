@@ -3,7 +3,7 @@ using Common.Unity.Events;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Unity.Common.Scripts
+namespace Common.Unity.Scripts.Common
 {
     public class SetUnityEventCall : MonoBehaviour
     {

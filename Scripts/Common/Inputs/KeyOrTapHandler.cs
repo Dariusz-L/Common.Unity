@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Common.Unity.Inputs
+namespace Common.Unity.Scripts.Common
 {
     public class KeyOrTapHandler : MonoBehaviour
     {

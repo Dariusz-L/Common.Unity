@@ -2,7 +2,7 @@ using Common.Unity.Events;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace StoryPanel
+namespace Common.Unity.Scripts.Common
 {
     public class TextSetter : MonoBehaviour
     {

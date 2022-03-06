@@ -1,7 +1,7 @@
 using Common.Unity.Events;
 using UnityEngine;
 
-namespace Unity.Common.Scripts
+namespace Common.Unity.Scripts.Common
 {
     public class EnableComponent : MonoBehaviour
     {

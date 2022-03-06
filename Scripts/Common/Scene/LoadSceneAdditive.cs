@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Common
 {
     public class LoadSceneAdditive : MonoBehaviour
     {

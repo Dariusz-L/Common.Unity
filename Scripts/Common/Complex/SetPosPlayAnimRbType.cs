@@ -1,8 +1,7 @@
-﻿using Common.Unity.Animating;
-using Common.Unity.Events;
+﻿using Common.Unity.Events;
 using UnityEngine;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Common
 {
     public class SetPosPlayAnimRbType : MonoBehaviour
     {

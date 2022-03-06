@@ -2,7 +2,7 @@
 using Common.Unity.Events;
 using UnityEngine;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Common
 {
     public class SetPosition2D : MonoBehaviour
     {

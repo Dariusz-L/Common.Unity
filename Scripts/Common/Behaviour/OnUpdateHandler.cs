@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Common.Basic.Unity.Behaviour
+namespace Common.Unity.Scripts.Common
 {
     public class OnUpdateHandler : MonoBehaviour
     {

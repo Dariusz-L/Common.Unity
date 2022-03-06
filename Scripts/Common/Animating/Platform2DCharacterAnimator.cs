@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Common.Unity.Animating
+namespace Common.Unity.Scripts.Common
 {
     public class Platform2DCharacterAnimator : MonoBehaviour
     {

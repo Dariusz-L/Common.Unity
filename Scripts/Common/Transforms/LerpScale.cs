@@ -2,7 +2,7 @@
 using UnityEngine;
 using static Common.Basic.Math.LerpingFunctions;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Common
 {
     public class LerpScale : MonoBehaviour
     {

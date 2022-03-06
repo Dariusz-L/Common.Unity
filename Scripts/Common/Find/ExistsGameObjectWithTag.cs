@@ -1,7 +1,7 @@
 ﻿using Common.Unity.Inspector;
 using UnityEngine;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Common
 {
     public class ExistsGameObjectWithTag : MonoBehaviour
     {

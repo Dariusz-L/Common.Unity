@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine.Assertions;
 
-namespace Common.Basic.Unity.Threads
+namespace Common.Unity.Scripts.Common
 {
 	public class UnityThreadQueue
 	{

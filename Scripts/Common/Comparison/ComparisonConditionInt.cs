@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Common.Unity.Scripts.Comparison
+namespace Common.Unity.Scripts.Common
 {
     public class ComparisonConditionInt : MonoBehaviour
     {

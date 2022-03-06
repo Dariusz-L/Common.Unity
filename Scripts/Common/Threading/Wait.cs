@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Common
 {
     public class Wait : MonoBehaviour
     {

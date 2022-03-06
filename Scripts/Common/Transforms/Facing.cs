@@ -3,7 +3,7 @@ using Common.Unity.Inspector;
 using System;
 using UnityEngine;
 
-namespace MLU
+namespace Common.Unity.Scripts.Common
 {
     public class Facing : MonoBehaviour
     {

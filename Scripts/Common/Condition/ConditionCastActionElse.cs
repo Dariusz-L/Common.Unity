@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Common.Unity.Scripts
+namespace Common.Unity.Scripts.Common
 {
     public class ConditionCastActionElse : MonoBehaviour
     {

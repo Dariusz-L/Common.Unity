@@ -1,7 +1,7 @@
 ﻿using Common.Unity.Inspector;
 using UnityEngine;
 
-namespace MLU
+namespace Common.Unity.Scripts.Common
 {
     public class DynamicRigidbodyMovement : MonoBehaviour
     {

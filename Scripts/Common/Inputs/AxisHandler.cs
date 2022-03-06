@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.Scripts.Common.Unity.Scripts.Inputs
+namespace Common.Unity.Scripts.Common
 {
     internal class AxisHandler : MonoBehaviour
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using static Common.Basic.Math.LerpingFunctions;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Common
 {
     public class LerpPosition2D : MonoBehaviour
     {

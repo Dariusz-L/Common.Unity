@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Common.Unity.Inputs
+namespace Common.Unity.Scripts.Common
 {
     public class IsKeyUp : MonoBehaviour
     {

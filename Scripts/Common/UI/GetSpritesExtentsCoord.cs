@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Common
 {
     public class GetSpritesExtentsCoord : MonoBehaviour
     {

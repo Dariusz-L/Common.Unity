@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using static Common.Basic.Math.LerpingFunctions;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Common
 {
     public class LerpImageChildFill : MonoBehaviour
     {

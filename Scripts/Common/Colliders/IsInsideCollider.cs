@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Common.Unity.Scripts.Colliders
+namespace Common.Unity.Scripts.Common
 {
     [RequireComponent(typeof(Collider2D))]
     public class IsInsideCollider : MonoBehaviour

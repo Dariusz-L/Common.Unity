@@ -1,7 +1,7 @@
 ﻿using Common.Unity.UI;
 using UnityEngine;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Common
 {
     public class RebuildAllUI : MonoBehaviour
     {
