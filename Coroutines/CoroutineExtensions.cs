@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Common
 {
-    public static class CommonCoroutinesExtensions
+    public static class CoroutineExtensions
     {
         public static Coroutine RunAsCoroutine(this Action action, Func<IEnumerator, Coroutine> startCoroutine)
         {

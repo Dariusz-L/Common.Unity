@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Common.Unity.Camera
+namespace Common.Unity.Cameras
 {
     public class SmoothCamera2DFollow : MonoBehaviour
     {
