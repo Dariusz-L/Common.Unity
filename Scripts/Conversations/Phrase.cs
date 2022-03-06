@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine.Localization;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Conversations
 {
     [Serializable]
     public class Phrase

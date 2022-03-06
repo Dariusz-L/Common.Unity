@@ -1,4 +1,4 @@
-﻿namespace MLU.Commands
+﻿namespace Common.Unity.Scripts.Conversations
 {
     public enum Side
     {

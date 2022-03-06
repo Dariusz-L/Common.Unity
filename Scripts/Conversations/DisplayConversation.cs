@@ -5,7 +5,7 @@ using Common.Unity.Prefabs;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Conversations
 {
     public class DisplayConversation : MonoBehaviour
     {

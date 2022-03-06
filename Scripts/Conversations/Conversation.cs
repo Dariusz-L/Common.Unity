@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace MLU.Commands
+namespace Common.Unity.Scripts.Conversations
 {
     [CreateAssetMenu(fileName = "Conversation", menuName = "", order = 1)]
     public class Conversation : ScriptableObject
