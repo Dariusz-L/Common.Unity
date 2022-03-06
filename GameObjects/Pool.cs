@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Common.Unity.GameObjects
 {
     public class Pool<T> 
         where T : Component

@@ -1,4 +1,4 @@
-﻿using Common.Basic.Unity.GameObjects;
+﻿using Common.Unity.GameObjects;
 using UnityEngine;
 
 namespace Common.Basic.Unity.Behaviour

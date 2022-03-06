@@ -1,7 +1,7 @@
-using Assets.Scripts;
 using Common.Basic.Collections;
 using Common.Unity.Components;
 using Common.Unity.Coroutines;
+using Common.Unity.GameObjects;
 using System;
 using UnityEngine;
 using UnityEngine.UI;

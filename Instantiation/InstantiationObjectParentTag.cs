@@ -1,4 +1,4 @@
-﻿using Common.Basic.Unity.GameObjects;
+﻿using Common.Unity.GameObjects;
 using Common.Unity.Inspector;
 using UnityEngine;
 
