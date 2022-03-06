@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Common.Basic.Unity.UI
+namespace Common.Unity.UI
 {
     public class UILayoutRebuilder
     {
