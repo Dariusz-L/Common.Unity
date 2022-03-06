@@ -40,6 +40,14 @@ namespace Assets.Scripts.Common.Unity.Components
             transform.localPosition = position;
         }
 
+        public static void SetLocalScale(this Transform transform, Vector2 value)
+        {
+            var source = transform.localScale;
+            source.x = value.x;
+            source.y = value.y;
+            transform.localScale = source;
+        }
+
         public static void SetX(this Transform transform, float value)
         {
             var position = transform.position;

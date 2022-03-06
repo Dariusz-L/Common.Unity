@@ -7,8 +7,20 @@ namespace Common.Unity.Functional
 {
     public static class UnityGetSetFuncs
     {
+        public static Action<float> SetRTWidthAction(RectTransform component) =>
+                value => component.SetWidth(value);
+
+        public static Func<float> GetRTWidthFunc(RectTransform component) =>
+            () => component.sizeDelta.x;
+
         public static Action<Vector2> SetTransformPosition2DAction(Transform component) =>
                 value => component.SetPosition(value);
+
+        public static Func<Vector2> GetTransformScale2DFunc(Transform component) =>
+            () => component.localScale;
+
+        public static Action<Vector2> SetTransformScale2DAction(Transform component) =>
+                value => component.SetLocalScale(value);
 
         public static Func<Vector2> GetTransformPosition2DFunc(Transform component) =>
             () => component.position;

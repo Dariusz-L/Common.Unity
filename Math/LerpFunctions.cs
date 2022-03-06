@@ -124,6 +124,26 @@ namespace Assets.Scripts.MLU.Commands
                 onDone);
         }
 
+        public static Coroutine LerpRTWidth(
+            RectTransform rt,
+            float targetValue,
+            float durationSeconds,
+            LerpFunctionType type,
+            Func<IEnumerator, Coroutine> startCoroutine,
+            Action onDone)
+        {
+            return LerpingFunctions.Lerp(
+                Mathf.Lerp,
+                UnityGetSetFuncs.GetRTWidthFunc(rt),
+                UnityGetSetFuncs.SetRTWidthAction(rt),
+                targetValue,
+                durationSeconds,
+                startCoroutine,
+                UnityGlobalStateFuncs.GetDeltaTime,
+                LerpingFunctions.GetLerpFunction(type),
+                onDone);
+        }
+
         public static void LerpPosition2D(
             Transform transform,
             Vector2 targetPosition,
@@ -137,6 +157,26 @@ namespace Assets.Scripts.MLU.Commands
                 UnityGetSetFuncs.GetTransformPosition2DFunc(transform),
                 UnityGetSetFuncs.SetTransformPosition2DAction(transform),
                 targetPosition,
+                durationSeconds,
+                startCoroutine,
+                UnityGlobalStateFuncs.GetDeltaTime,
+                LerpingFunctions.GetLerpFunction(type),
+                onDone);
+        }
+
+        public static void LerpScale2D(
+            Transform transform,
+            float targetValue,
+            float durationSeconds,
+            LerpFunctionType type,
+            Func<IEnumerator, Coroutine> startCoroutine,
+            Action onDone)
+        {
+            LerpingFunctions.Lerp(
+                Vector2.Lerp,
+                UnityGetSetFuncs.GetTransformScale2DFunc(transform),
+                UnityGetSetFuncs.SetTransformScale2DAction(transform),
+                new Vector2(targetValue, targetValue),
                 durationSeconds,
                 startCoroutine,
                 UnityGlobalStateFuncs.GetDeltaTime,
