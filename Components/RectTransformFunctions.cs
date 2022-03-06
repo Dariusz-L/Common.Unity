@@ -20,5 +20,11 @@ namespace Assets.Scripts.Common.Unity.Components
             return (int) (parentHeight / childHeight);
         }
 
+        public static void SetWidth(this RectTransform rt, float value)
+        {
+            var source = rt.sizeDelta;
+            source.x = value;
+            rt.sizeDelta = source;
+        }
     }
 }
