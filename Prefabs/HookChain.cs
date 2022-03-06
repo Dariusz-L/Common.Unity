@@ -5,7 +5,7 @@ using Common.Unity.Math;
 using System;
 using UnityEngine;
 
-namespace MLU
+namespace Common.Unity.Prefabs
 {
     public class HookChain : MonoBehaviour
     {
@@ -50,7 +50,7 @@ namespace MLU
 
                     var spawned = _objectPool.Spawn(active: true);
                     spawned.transform.SetLocalPosition(_lastPos);
-                    spawned.transform.TranslateY(_diffExtent * Math.Sign(distance));
+                    spawned.transform.TranslateY(_diffExtent * System.Math.Sign(distance));
                 });
         }
 

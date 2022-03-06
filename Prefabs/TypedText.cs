@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Autonomous
+namespace Common.Unity.Prefabs
 {
     public class TypedText : MonoBehaviour
     {

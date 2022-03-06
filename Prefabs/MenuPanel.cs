@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Common.Basic.Math.LerpingFunctions;
 
-namespace Autonomous
+namespace Common.Unity.Prefabs
 {
     public class MenuPanel : MonoBehaviour
     {

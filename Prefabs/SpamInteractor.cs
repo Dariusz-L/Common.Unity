@@ -4,7 +4,7 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Autonomous
+namespace Common.Unity.Prefabs
 {
     public class SpamInteractor : MonoBehaviour
     {

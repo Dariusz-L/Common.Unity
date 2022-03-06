@@ -1,7 +1,7 @@
-﻿using Autonomous;
-using Common.Basic.Collections;
+﻿using Common.Basic.Collections;
 using Common.Unity.Events;
 using Common.Unity.GameObjects;
+using Common.Unity.Prefabs;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 
