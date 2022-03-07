@@ -1,3 +1,4 @@
+using Common.Basic.Counters;
 using Common.Unity.Events;
 using System;
 using System.Diagnostics;
@@ -8,7 +9,7 @@ namespace Common.Unity.Prefabs
 {
     public class SpamInteractor : MonoBehaviour
     {
-        [SerializeField] private float _blowTimeResetSeconds;
+        [SerializeField] private float _blowTimeResetMilliseconds;
         [SerializeField] private int _blowSpamInteractCount;
 
         [SerializeField] private GetBool _isCloseEnough;
@@ -20,7 +21,7 @@ namespace Common.Unity.Prefabs
 
         private void Start() =>
             _interactorImpl = new SpamInteractorImpl(
-                _blowTimeResetSeconds, _blowSpamInteractCount, 
+                _blowTimeResetMilliseconds, _blowSpamInteractCount, 
                 _isCloseEnough.Invoke, _isInteractInput.Invoke, 
                 _onCountReached.Invoke, _onInteract.Invoke);
 
@@ -60,7 +61,7 @@ namespace Common.Unity.Prefabs
         private InteractorImplD _interactorImplD;
 
         public SpamInteractorImpl(
-            float interactSpamTimeResetSeconds, 
+            float interactSpamTimeResetMS, 
             int spamInteractCount, 
             Func<bool> isCloseEnough, 
             Func<bool> isInteractInput, 
@@ -68,7 +69,7 @@ namespace Common.Unity.Prefabs
             Action onInteract)
         {
             _interactorImplD = new InteractorImplD(isCloseEnough, isInteractInput, onInteract);
-            _interactAndTimeCounter = new TimedCounter(spamInteractCount, interactSpamTimeResetSeconds, onCountReached);
+            _interactAndTimeCounter = new TimedCounter(spamInteractCount, interactSpamTimeResetMS, onCountReached, TimerFunctions.FromStopwatch());
         }
 
         public bool Interact()
@@ -79,46 +80,6 @@ namespace Common.Unity.Prefabs
             _interactAndTimeCounter.Increase();
 
             return true;
-        }
-    }
-
-    public class TimedCounter : MonoBehaviour
-    {
-        private readonly int _reachCount;
-        private readonly float _increaseIntervalResetTime;
-        private readonly Action _onCountReached;
-
-        private Stopwatch _intervalStopwatch = new Stopwatch();
-        private int _count;
-
-        public TimedCounter(int reachCount, float increaseIntervalResetTime, Action onCountReached)
-        {
-            _reachCount = reachCount;
-            _increaseIntervalResetTime = increaseIntervalResetTime;
-            _onCountReached = onCountReached;
-        }
-
-        public void Increase()
-        {
-            if (!_intervalStopwatch.IsRunning)
-                _intervalStopwatch.Restart();
-
-            var increaseIntervalResetTimeMS = _increaseIntervalResetTime * 1000;
-            if (_intervalStopwatch.ElapsedMilliseconds >= increaseIntervalResetTimeMS)
-                Reset();
-
-            _count++;
-
-            if (_count == _reachCount)
-                Reset();
-
-            _onCountReached();
-        }
-
-        private void Reset()
-        {
-            _intervalStopwatch.Stop();
-            _count = 0;
         }
     }
 }
