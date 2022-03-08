@@ -1,4 +1,6 @@
-﻿using Common.Unity.GameObjects;
+﻿using Common.Basic.Collections;
+using Common.Unity.GameObjects;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,9 +8,19 @@ namespace Common.Unity.Components
 {
     public static class GraphicExtensions
     {
+        public static void NestedGraphicsToClear(this IEnumerable<GameObject> gameObjects)
+        {
+            gameObjects.ForEach(go => go.NestedGraphicsToClear());
+        }
+
         public static void NestedGraphicsToClear(this GameObject gameObject)
         {
             gameObject.ForEachNested<Graphic>(g => g.ToClearSingle());
+        }
+
+        public static void NestedGraphicsToTransparent(this IEnumerable<GameObject> gameObjects)
+        {
+            gameObjects.ForEach(go => go.NestedGraphicsToTransparent());
         }
 
         public static void NestedGraphicsToTransparent(this GameObject gameObject)
