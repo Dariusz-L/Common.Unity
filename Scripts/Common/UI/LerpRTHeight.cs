@@ -12,6 +12,7 @@ namespace Common.Unity.Scripts.Common
     public class LerpRTHeight : MonoBehaviour
     {
         [SerializeField] private GetGameObject _getImageGO;
+        [SerializeField] private GameObject _goListItem;
         [SerializeField] private GameObject _go;
         [SerializeField] private float _targetValue;
         [SerializeField] private float _durationSeconds;
@@ -23,6 +24,9 @@ namespace Common.Unity.Scripts.Common
             if (!_go)
                 _go = _getImageGO?.Invoke();
 
+            var rt = _go.GetComponent<RectTransform>();
+            var h = rt.sizeDelta.y;
+
             var csf = _go.SetFitModeIfExist(FitMode.Unconstrained, out var previous);
 
             LerpFunctions.LerpRTHeight(
@@ -32,6 +36,15 @@ namespace Common.Unity.Scripts.Common
                     _onDone.ToAction()();
                     _go.SetFitModeIfExist(previous);
                 });
+
+            //var upperRT = _go.GetComponent<RectTransform>();
+            //LerpFunctions.LerpRTHeight(
+            //    upperRT, upperRT.sizeDelta.y - h, _durationSeconds, _lerpFunctionType,
+            //    StartCoroutine, onDone: () =>
+            //    {
+            //        _onDone.ToAction()();
+            //        _go.SetFitModeIfExist(previous);
+            //    });
         }
     }
 
