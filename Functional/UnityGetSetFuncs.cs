@@ -13,6 +13,12 @@ namespace Common.Unity.Functional
         public static Func<float> GetRTWidthFunc(RectTransform component) =>
             () => component.sizeDelta.x;
 
+        public static Action<float> SetRTHeightAction(RectTransform component) =>
+                value => component.SetHeight(value);
+
+        public static Func<float> GetRTHeightFunc(RectTransform component) =>
+            () => component.sizeDelta.y;
+
         public static Action<Vector2> SetTransformPosition2DAction(Transform component) =>
                 value => component.SetPosition(value);
 

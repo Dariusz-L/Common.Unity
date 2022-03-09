@@ -26,5 +26,12 @@ namespace Common.Unity.Components
             source.x = value;
             rt.sizeDelta = source;
         }
+
+        public static void SetHeight(this RectTransform rt, float value)
+        {
+            var source = rt.sizeDelta;
+            source.y = value;
+            rt.sizeDelta = source;
+        }
     }
 }

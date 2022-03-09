@@ -143,6 +143,26 @@ namespace Common.Unity.Components
                 onDone);
         }
 
+        public static Coroutine LerpRTHeight(
+            RectTransform rt,
+            float targetValue,
+            float durationSeconds,
+            LerpFunctionType type,
+            Func<IEnumerator, Coroutine> startCoroutine,
+            Action onDone)
+        {
+            return LerpingFunctions.Lerp(
+                Mathf.Lerp,
+                UnityGetSetFuncs.GetRTHeightFunc(rt),
+                UnityGetSetFuncs.SetRTHeightAction(rt),
+                targetValue,
+                durationSeconds,
+                startCoroutine,
+                UnityGlobalStateFuncs.GetDeltaTime,
+                LerpingFunctions.GetLerpFunction(type),
+                onDone);
+        }
+
         public static void LerpPosition2D(
             Transform transform,
             Vector2 targetPosition,
