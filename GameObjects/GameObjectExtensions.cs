@@ -167,7 +167,24 @@ namespace Common.Unity.GameObjects
             if (@object is Component component)
                 return component.GetComponentsInParent<T>();
 
+            if (@object is GameObject go)
+                return go.GetComponentsInParent<T>();
+
             return Array.Empty<T>();
+        }
+
+        public static IEnumerable<T> GetComponentsInParentUntil<T>(this object @object, GameObject untilGO)
+            where T : Component
+        {
+            var components = @object.GetComponentsInParent<T>();
+
+            var taken = components.TakeWhile(c => !ReferenceEquals(c.gameObject, untilGO));
+
+            var thatC = untilGO.GetComponent<T>();
+            if (components.Contains(thatC))
+                taken = taken.Append(thatC);
+
+            return taken;
         }
 
         public static T GetFromThisOrNestedChildren<T>(this object @object)
