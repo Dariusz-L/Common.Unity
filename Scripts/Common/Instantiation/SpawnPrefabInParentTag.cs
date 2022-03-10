@@ -23,9 +23,9 @@ namespace Common.Unity.Scripts.Common
                     _spawned = Instantiate(_prefab);
                 else
                     _spawned = Instantiate(_prefab, _parent.transform);
-            }
 
-            _spawned.SetActive(_enabled);
+                _spawned.SetActive(_enabled);
+            }
 
             return _spawned;
         }
