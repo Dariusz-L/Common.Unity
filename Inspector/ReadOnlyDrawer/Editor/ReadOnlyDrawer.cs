@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 using Common.Unity.Inspector;
 
@@ -30,3 +32,5 @@ namespace Common.Unity.Editor
     }
 
 }
+
+#endif

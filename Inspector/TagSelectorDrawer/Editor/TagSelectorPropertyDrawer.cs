@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using Common.Unity.Inspector;
@@ -75,3 +77,5 @@ namespace Common.Unity.Editor
         }
     }
 }
+
+#endif
