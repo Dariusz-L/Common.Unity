@@ -46,7 +46,7 @@ namespace Common.Unity.Scripts.Common
             var upperRT = upperRTs.Skip(1);
             foreach (var u in upperRT)
                 LerpFunctions.LerpRTHeight(
-                    u, u.sizeDelta.y - h, _durationSeconds, _lerpFunctionType,
+                    u, u.sizeDelta.y - h + _targetValue, _durationSeconds, _lerpFunctionType,
                     StartCoroutine, _onDone.ToAction());
         }
     }
