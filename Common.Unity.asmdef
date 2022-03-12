@@ -2,7 +2,7 @@
     "name": "Common.Unity",
     "rootNamespace": "",
     "references": [
-        "GUID:835e42148cf807b4e86e956aadedc251",
+        "GUID:17f6fb8ad20b6504b8c4cd5722c31095",
         "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
         "GUID:11a2306c728a4b843a652ec6c2f142bc",
         "GUID:3a9781db4804a9945b9883f3a7c46d45",
