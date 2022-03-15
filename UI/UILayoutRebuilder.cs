@@ -34,7 +34,7 @@ namespace Common.Unity.UI
             if (layoutGroup != null && contentSizeFitter != null)
             {
                 contentSizeFitter.SetLayoutHorizontal();
-                contentSizeFitter.SetLayoutHorizontal();
+                contentSizeFitter.SetLayoutVertical();
             }
             if (contentSizeFitter != null)
                 LayoutRebuilder.ForceRebuildLayoutImmediate(transform);
