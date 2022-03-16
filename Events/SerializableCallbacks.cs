@@ -5,7 +5,13 @@ using UnityEngine.EventSystems;
 
 namespace Common.Unity.Events
 {
-    [Serializable] public class GetGameObject : SerializableCallback<GameObject> { }
+    // primitives
+    [Serializable] public class OnString : UnityEvent<string> { }
     [Serializable] public class GetBool : SerializableCallback<bool> { }
+
+
+    // Unity
+    [Serializable] public class GetGameObject : SerializableCallback<GameObject> { }
     [Serializable] public class OnPointerEventData : UnityEvent<PointerEventData> { }
+
 }
