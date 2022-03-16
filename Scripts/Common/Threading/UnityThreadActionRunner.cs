@@ -31,5 +31,7 @@ namespace Common.Unity.Scripts.Common
         {
             _mainThreadQueue.SetAction(action, delayTimeSeconds);
         }
+
+        public static bool IsEmpty => _mainThreadQueue.IsEmpty;
     }
 }

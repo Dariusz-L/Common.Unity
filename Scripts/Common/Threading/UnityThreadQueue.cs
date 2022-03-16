@@ -18,6 +18,7 @@ namespace Common.Unity.Scripts.Common
 		private Stack<ActionCommand> _actionPool;
 		private Queue<ActionCommand> _commandQueue;
 		private Stopwatch _executeLimitStopwatch;
+		public bool IsEmpty => _commandQueue.Count == 0;
 
 		public UnityThreadQueue()
 		{
