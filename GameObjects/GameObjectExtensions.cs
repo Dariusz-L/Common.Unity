@@ -194,6 +194,9 @@ namespace Common.Unity.GameObjects
 
         public static IEnumerable<T> GetNestedChildren<T>(this UnityEngine.GameObject gameObject)
         {
+            if (!gameObject.activeSelf)
+                return Array.Empty<T>();
+
             List<T> children = new List<T>();
 
             foreach (Transform t in gameObject.transform)
@@ -208,7 +211,7 @@ namespace Common.Unity.GameObjects
             return children;
         }
 
-        public static IEnumerable<T> GetNestedChildren<T>(this UnityEngine.Transform transform)
+        public static IEnumerable<T> GetNestedChildren<T>(this Transform transform)
         {
             return transform.gameObject.GetNestedChildren<T>();
         }
