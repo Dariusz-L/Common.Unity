@@ -1,6 +1,7 @@
 ﻿using Common.Basic.Collections;
 using Common.Unity.GameObjects;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,5 +45,8 @@ namespace Common.Unity.Components
             color[index] = value;
             graphic.color = color;
         }
+
+        public static IEnumerable<Component> GetVisibleChildren(this Component component)
+            => component.GetChildren<Graphic>().Where(g => g.color.a > 0);
     }
 }

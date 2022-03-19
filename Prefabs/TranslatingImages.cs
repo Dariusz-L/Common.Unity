@@ -22,7 +22,7 @@ namespace Common.Unity.Prefabs
         {
             _imageTemplate.gameObject.SetActive(false);
  
-            int imageCount = RectTransformFunctions.GetCountByHeightIn(_imageTemplate, _imageParent);
+            int imageCount = RectTransformExtensions.GetCountByHeightIn(_imageTemplate, _imageParent);
             Pool.CreateResizeSpawnAll(_imageTemplate, _imageParent, imageCount, out _imageArray);
 
             GetUpdateImagesAction()

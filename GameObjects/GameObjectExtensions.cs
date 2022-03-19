@@ -215,5 +215,13 @@ namespace Common.Unity.GameObjects
         {
             return transform.gameObject.GetNestedChildren<T>();
         }
+
+        public static IEnumerable<T> GetChildren<T>(this GameObject gameObject) => GetChildren<T>(gameObject.transform);
+
+        public static IEnumerable<T> GetChildren<T>(this Component component)
+        {
+            foreach (Transform t in component.transform)
+                yield return t.GetComponent<T>();
+        }
     }
 }
