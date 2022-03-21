@@ -145,5 +145,13 @@ namespace Common.Unity.GameObjects
 
             return pool;
         }
+
+        public static Pool<T> CreateResizeSpawnAll<T>(T prefab, Transform parent, int count, out List<T> spawnedList)
+            where T : Component
+        {
+            var pool = CreateResizeSpawnAll(prefab, parent, count, out T[] spawnedArray);
+            spawnedList = spawnedArray.ToList();
+            return pool;
+        }
     }
 }
