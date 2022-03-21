@@ -59,12 +59,10 @@ namespace Common.Unity.Components
             return spacing + lg.padding.top + lg.padding.bottom;
         }
 
-        public static void FitToVerticalLayoutGroup(this Component component)
+        public static void FitToVerticalLayoutGroup(this Component component, IEnumerable<Component> layoutElements)
         {
-            var visibleChildren = component.GetVisibleChildren().ToList();
-
-            var propertiesHeight = visibleChildren.GetHeight();
-            var verticalLayoutExt = component.GetVerticalLayoutGroupHeightExt(visibleChildren.Count);
+            var propertiesHeight = layoutElements.GetHeight();
+            var verticalLayoutExt = component.GetVerticalLayoutGroupHeightExt(layoutElements.Count());
 
             var totalHeight = propertiesHeight + verticalLayoutExt;
             component.GetComponent<RectTransform>().SetHeight(totalHeight);
