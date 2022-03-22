@@ -17,11 +17,9 @@ namespace Common.Unity.GameObjects
         private readonly List<T> _active = new List<T>();
         private T _last;
 
-        public Pool(T prefab, Transform parent = null)
-        {
-            _prefab = prefab;
-            _parent = parent;
-        }
+        public Pool(T prefab) => _prefab = prefab;
+        public Pool(T prefab, Transform parent) : this(prefab) => _parent = parent;
+        public Pool(T prefab, Transform parent, int size) : this(prefab, parent) => Resize(size);
 
         public static Pool<T> Create(T prefab, Transform parent = null)
         {
