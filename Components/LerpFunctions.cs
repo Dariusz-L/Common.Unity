@@ -183,6 +183,46 @@ namespace Common.Unity.Components
                 onDone);
         }
 
+        public static void LerpLocalPosition2D(
+            Transform transform,
+            Vector2 targetPosition,
+            float durationSeconds,
+            LerpFunctionType type,
+            Func<IEnumerator, Coroutine> startCoroutine,
+            Action onDone)
+        {
+            LerpingFunctions.Lerp(
+                Vector2.Lerp,
+                UnityGetSetFuncs.GetTransformLocalPosition2DFunc(transform),
+                UnityGetSetFuncs.SetTransformLocalPosition2DAction(transform),
+                targetPosition,
+                durationSeconds,
+                startCoroutine,
+                UnityGlobalStateFuncs.GetDeltaTime,
+                LerpingFunctions.GetLerpFunction(type),
+                onDone);
+        }
+
+        public static void LerpAnchoredPosition2D(
+            RectTransform rt,
+            Vector2 targetPosition,
+            float durationSeconds,
+            LerpFunctionType type,
+            Func<IEnumerator, Coroutine> startCoroutine,
+            Action onDone)
+        {
+            LerpingFunctions.Lerp(
+                Vector2.Lerp,
+                UnityGetSetFuncs.GetAnchoredPosition2DFunc(rt),
+                UnityGetSetFuncs.SetAnchoredPosition2DAction(rt),
+                targetPosition,
+                durationSeconds,
+                startCoroutine,
+                UnityGlobalStateFuncs.GetDeltaTime,
+                LerpingFunctions.GetLerpFunction(type),
+                onDone);
+        }
+
         public static void LerpScale2D(
             Transform transform,
             float targetValue,

@@ -67,5 +67,66 @@ namespace Common.Unity.Components
             var totalHeight = propertiesHeight + verticalLayoutExt;
             component.GetComponent<RectTransform>().SetHeight(totalHeight);
         }
+
+        public static void SetLeft(this Component rt, float left)
+        {
+            SetLeft(rt.GetComponent<RectTransform>(), left);
+        }
+
+        public static void SetRight(this Component rt, float right)
+        {
+            SetRight(rt.GetComponent<RectTransform>(), right);
+        }
+
+        public static void SetTop(this Component rt, float top)
+        {
+            SetTop(rt.GetComponent<RectTransform>(), top);
+        }
+
+        public static void SetBottom(this Component rt, float bottom)
+        {
+            SetBottom(rt.GetComponent<RectTransform>(), bottom);
+        }
+
+        public static void SetLeft(this RectTransform rt, float left)
+        {
+            rt.offsetMin = new Vector2(left, rt.offsetMin.y);
+        }
+
+        public static void SetRight(this RectTransform rt, float right)
+        {
+            rt.offsetMax = new Vector2(-right, rt.offsetMax.y);
+        }
+
+        public static void SetTop(this RectTransform rt, float top)
+        {
+            rt.offsetMax = new Vector2(rt.offsetMax.x, -top);
+        }
+
+        public static void SetBottom(this RectTransform rt, float bottom)
+        {
+            rt.offsetMin = new Vector2(rt.offsetMin.x, bottom);
+        }
+
+        public static void SetAnchoredPositionX(this RectTransform transform, float value)
+        {
+            var position = transform.anchoredPosition;
+            position.x = value;
+            transform.anchoredPosition = position;
+        }
+
+        public static void SetAnchoredPositionY(this RectTransform transform, float value)
+        {
+            var position = transform.anchoredPosition;
+            position.y = value;
+            transform.anchoredPosition = position;
+        }
+
+        public static void SetGroupLeftPadding(this Component component, int value) => component.GetComponent<LayoutGroup>().SetGroupLeftPadding(value);
+
+        public static void SetGroupLeftPadding(this LayoutGroup lg, int value) => lg.padding.left = value;
+
+        public static int GetGroupLeftPadding(this Component component) => component.GetComponent<LayoutGroup>().GetGroupLeftPadding();
+        public static int GetGroupLeftPadding(this LayoutGroup lg) => lg.padding.left;
     }
 }

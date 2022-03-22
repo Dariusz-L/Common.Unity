@@ -19,17 +19,29 @@ namespace Common.Unity.Functional
         public static Func<float> GetRTHeightFunc(RectTransform component) =>
             () => component.sizeDelta.y;
 
-        public static Action<Vector2> SetTransformPosition2DAction(Transform component) =>
-                value => component.SetPosition(value);
-
         public static Func<Vector2> GetTransformScale2DFunc(Transform component) =>
             () => component.localScale;
 
         public static Action<Vector2> SetTransformScale2DAction(Transform component) =>
                 value => component.SetLocalScale(value);
 
+        public static Action<Vector2> SetTransformPosition2DAction(Transform component) =>
+                value => component.SetPosition(value);
+
         public static Func<Vector2> GetTransformPosition2DFunc(Transform component) =>
             () => component.position;
+
+        public static Action<Vector2> SetAnchoredPosition2DAction(RectTransform component) =>
+                value => component.anchoredPosition = value;
+
+        public static Func<Vector2> GetAnchoredPosition2DFunc(RectTransform component) =>
+            () => component.anchoredPosition;
+
+        public static Action<Vector2> SetTransformLocalPosition2DAction(Transform component) =>
+                value => component.SetLocalPosition(value);
+
+        public static Func<Vector2> GetTransformLocalPosition2DFunc(Transform component) =>
+            () => component.localPosition;
 
         public static Action<Color> SetGraphicColorAction(Graphic component) =>
             value => component.color = value;

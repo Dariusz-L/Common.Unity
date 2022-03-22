@@ -221,7 +221,26 @@ namespace Common.Unity.GameObjects
         public static IEnumerable<T> GetChildren<T>(this Component component)
         {
             foreach (Transform t in component.transform)
-                yield return t.GetComponent<T>();
+            {
+                T child = t.GetComponent<T>();
+                if (child != null)
+                    yield return child;
+            }
         }
+
+        public static IEnumerable<T> GetSiblingsAfter<T>(this Component component)
+        {
+            return component
+                .transform
+                .parent
+                .GetChildren<T>()
+                .SkipWhile(c => !ReferenceEquals(c, component))
+                .Skip(1)
+                .ToList();
+        }
+
+        public static IEnumerable<T> GetSiblingsAfter<T>(this IEnumerable<Component> components) => components.SelectMany(c => c.GetSiblingsAfter<T>()).ToList();
+
+        public static IEnumerable<T> To<T>(this IEnumerable<Component> components) => components.Select(c => c.GetComponent<T>()).ToList();
     }
 }
