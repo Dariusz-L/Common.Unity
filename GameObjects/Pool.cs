@@ -77,6 +77,7 @@ namespace Common.Unity.GameObjects
         public void DestroyAll()
         {
             _active.ForEach(i => i.gameObject.SetActive(false));
+            _active.ForEach(i => i.transform.parent = _parent);
             _active.Clear();
             _last = null;
         }
