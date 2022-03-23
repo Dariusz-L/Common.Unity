@@ -13,7 +13,7 @@ namespace Common.Unity.GameObjects
         private readonly T _prefab;
         private readonly Transform _parent;
 
-        private readonly Queue<T> _instantiated = new Queue<T>();
+        private readonly Queue<T> _pool = new Queue<T>();
         private readonly List<T> _active = new List<T>();
         private T _last;
 
@@ -33,7 +33,7 @@ namespace Common.Unity.GameObjects
                 {
                     var instantiated = Instantiate();
                     instantiated.gameObject.SetActive(false);
-                    _instantiated.Enqueue(instantiated);
+                    _pool.Enqueue(instantiated);
                 });
         }
 
@@ -47,11 +47,12 @@ namespace Common.Unity.GameObjects
 
         public T Spawn(bool active = true)
         {
-            return _instantiated
-                .DeEnqueue()
-                .Then(i => i.gameObject.SetActive(active))
-                .Then(i => _last = i)
-                .Then(i => _active.Add(i));
+            var nextInPool = _pool.Peek();
+
+            bool isAlreadyActive = _active.Contains(nextInPool);
+            T i = isAlreadyActive ? Instantiate() : _pool.Dequeue();
+
+            return AddToCollectionsAndSet(i, active);
         }
 
         public IEnumerable<T> Spawn(int count, bool active = true) =>
@@ -61,7 +62,7 @@ namespace Common.Unity.GameObjects
                 .ToList();
 
         public IEnumerable<T> SpawnAll(bool active = true) =>
-           Spawn(_instantiated.Count());
+           Spawn(_pool.Count());
 
         public void DestroyLast()
         {
@@ -111,12 +112,23 @@ namespace Common.Unity.GameObjects
 
         public void ForEach(Action<T> action)
         {
-            _instantiated.ForEach(i => action(i));
+            _pool.ForEach(i => action(i));
+        }
+
+        private T AddToCollectionsAndSet(T obj, bool active)
+        {
+            _pool.Enqueue(obj);
+            _active.Add(obj);
+
+            obj.gameObject.SetActive(active);
+            _last = obj;
+
+            return obj;
         }
 
         public T LastSpawned => _last;
         public int ActiveCount => _active.Count;
-        public IEnumerable<T> Instantiated => _instantiated;
+        public IEnumerable<T> Instantiated => _pool;
         public IEnumerable<T> Active => _active;
         public T Prefab => _prefab;
     }
