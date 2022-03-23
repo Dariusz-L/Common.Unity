@@ -48,6 +48,13 @@ namespace Common.Unity.Components
             transform.localScale = source;
         }
 
+        public static void SetRotationZ(this Transform transform, float value)
+        {
+            var source = transform.eulerAngles;
+            source.z = value;
+            transform.rotation = Quaternion.Euler(source);
+        }
+
         public static void SetX(this Transform transform, float value)
         {
             var position = transform.position;

@@ -183,6 +183,26 @@ namespace Common.Unity.Components
                 onDone);
         }
 
+        public static void LerpRotationZ(
+            Transform transform,
+            float targetValue,
+            float durationSeconds,
+            LerpFunctionType type,
+            Func<IEnumerator, Coroutine> startCoroutine,
+            Action onDone)
+        {
+            LerpingFunctions.Lerp(
+                Mathf.Lerp,
+                UnityGetSetFuncs.GetTransformRotationZFunc(transform),
+                UnityGetSetFuncs.SetTransformRotationZAction(transform),
+                targetValue,
+                durationSeconds,
+                startCoroutine,
+                UnityGlobalStateFuncs.GetDeltaTime,
+                LerpingFunctions.GetLerpFunction(type),
+                onDone);
+        }
+
         public static void LerpLocalPosition2D(
             Transform transform,
             Vector2 targetPosition,

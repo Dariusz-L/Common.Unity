@@ -19,6 +19,12 @@ namespace Common.Unity.Functional
         public static Func<float> GetRTHeightFunc(RectTransform component) =>
             () => component.sizeDelta.y;
 
+        public static Action<float> SetTransformRotationZAction(Transform component) =>
+                value => component.SetRotationZ(value);
+
+        public static Func<float> GetTransformRotationZFunc(Transform component) =>
+         () => component.rotation.eulerAngles.z;
+
         public static Func<Vector2> GetTransformScale2DFunc(Transform component) =>
             () => component.localScale;
 
