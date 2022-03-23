@@ -149,7 +149,7 @@ namespace Common.Unity.Components
             float durationSeconds,
             LerpFunctionType type,
             Func<IEnumerator, Coroutine> startCoroutine,
-            Action onDone)
+            Action onDone = null)
         {
             return LerpingFunctions.Lerp(
                 Mathf.Lerp,
@@ -209,7 +209,7 @@ namespace Common.Unity.Components
             float durationSeconds,
             LerpFunctionType type,
             Func<IEnumerator, Coroutine> startCoroutine,
-            Action onDone)
+            Action onDone = null)
         {
             LerpingFunctions.Lerp(
                 Vector2.Lerp,

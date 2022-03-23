@@ -7,6 +7,10 @@ namespace Common.Unity.Components
 {
     public static class RectTransformExtensions
     {
+        public static RectTransform RT(this object @object) => (@object as Component).GetComponent<RectTransform>();
+        public static RectTransform RT(this Component component) => component.GetComponent<RectTransform>();
+        public static IEnumerable<RectTransform> RTs(this IEnumerable<Component> components) => components.Select(c => c.RT()).ToList();
+
         public static int GetCountByHeightIn(Component child, Component parent)
         {
             var childRT = child.GetComponent<RectTransform>();
