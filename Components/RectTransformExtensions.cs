@@ -44,9 +44,13 @@ namespace Common.Unity.Components
         public static float GetHeight(this IEnumerable<Component> uiComponents) => uiComponents.Select(c => c.GetComponent<RectTransform>()).GetHeight();
 
         public static float GetHeight(this IEnumerable<RectTransform> rts)
-            => rts
-                .Select(rt => rt.rect.height)
-                .Aggregate((x, y) => x + y);
+        {
+            var heights = rts.Select(rt => rt.rect.height);
+            if (!heights.Any())
+                return default;
+
+            return heights.Aggregate((x, y) => x + y);
+        }
 
         public static float GetVerticalLayoutGroupHeightExt(this Component component, int itemsCount)
             => component.GetComponent<VerticalLayoutGroup>().GetVerticalLayoutGroupHeightExt(itemsCount);
