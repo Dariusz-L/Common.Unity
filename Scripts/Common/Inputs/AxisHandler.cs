@@ -18,6 +18,9 @@ namespace Common.Unity.Scripts.Common
 
         private void Update()
         {
+            if (!Inputs.IsActive)
+                return;
+
             string axisName = GetAxisName(_axisType);
             var axis = _smooth ? Input.GetAxis(axisName) : Input.GetAxisRaw(axisName);
             OnInput?.Invoke(axis);

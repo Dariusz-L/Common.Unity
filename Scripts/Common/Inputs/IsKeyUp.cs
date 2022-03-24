@@ -6,6 +6,12 @@ namespace Common.Unity.Scripts.Common
     {
         [SerializeField] private KeyCode _key;
 
-        public bool Check() => Input.GetKeyUp(_key);
+        public bool Check()
+        {
+            if (!Inputs.IsActive)
+                return false;
+
+            return Input.GetKeyUp(_key);
+        }
     }
 }

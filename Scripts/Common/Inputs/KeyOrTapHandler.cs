@@ -19,6 +19,9 @@ namespace Common.Unity.Scripts.Common
 
         private void Update()
         {
+            if (!Inputs.IsActive)
+                return;
+
             if (Input.GetKeyUp(_key))
                 _onUp?.Invoke();
 
