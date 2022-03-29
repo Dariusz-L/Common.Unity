@@ -48,5 +48,14 @@ namespace Common.Unity.Components
 
         public static IEnumerable<Component> GetVisibleChildren(this Component component)
             => component.GetChildren<Graphic>().Where(g => g.color.a > 0);
+
+        public static void SetSprite(this Component component, Sprite sprite)
+        {
+            var image = component.GetComponent<Image>();
+            if (!image)
+                return;
+
+            image.sprite = sprite;
+        }
     }
 }
