@@ -13,5 +13,6 @@ namespace Common.Unity.Events
     // Unity
     [Serializable] public class GetGameObject : SerializableCallback<GameObject> { }
     [Serializable] public class OnPointerEventData : UnityEvent<PointerEventData> { }
+    [Serializable] public class SetPointerEventData : UnityEvent<Action<PointerEventData>> { }
 
 }

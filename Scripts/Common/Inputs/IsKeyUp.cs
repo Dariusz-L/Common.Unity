@@ -8,7 +8,7 @@ namespace Common.Unity.Scripts.Common
 
         public bool Check()
         {
-            if (!Inputs.IsActive)
+            if (!CustomInput.IsActive)
                 return false;
 
             return Input.GetKeyUp(_key);

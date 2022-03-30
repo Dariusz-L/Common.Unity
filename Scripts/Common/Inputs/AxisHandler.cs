@@ -18,7 +18,7 @@ namespace Common.Unity.Scripts.Common
 
         private void Update()
         {
-            if (!Inputs.IsActive)
+            if (!CustomInput.IsActive)
                 return;
 
             string axisName = GetAxisName(_axisType);
