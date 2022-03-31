@@ -2,7 +2,6 @@
 using Common.Unity.GameObjects;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace Common.Unity.UI
