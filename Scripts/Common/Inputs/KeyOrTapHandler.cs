@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Common.Unity.Scripts.Common
@@ -25,14 +26,29 @@ namespace Common.Unity.Scripts.Common
             if (Input.GetKeyUp(_key))
                 _onUp?.Invoke();
 
-            if (Input.GetMouseButtonUp(0) && Input.touchSupported)
+            if (Input.GetMouseButtonUp(0))
                 _onUp?.Invoke();
 
             if (Input.GetKeyDown(_key))
                 _onDown?.Invoke();
 
-            if (Input.GetMouseButtonDown(0) && Input.touchSupported)
+            if (Input.GetMouseButtonDown(0))
                 _onDown?.Invoke();
+        }
+
+        public void SetKeyUp(Action action)
+        {
+            _onUp = _onUp ?? new UnityEvent();
+
+            if (_onUp.GetPersistentEventCount() > 0)
+                _onUp.RemoveAllListeners();
+
+            _onUp.AddListener(action.Invoke);
+        }
+
+        public void SetKey(KeyCode key)
+        {
+            _key = key;
         }
     }
 }

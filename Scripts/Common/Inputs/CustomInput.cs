@@ -1,4 +1,4 @@
-﻿using Common.Basic.Collections;
+﻿using Common.Unity.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,8 +16,9 @@ namespace Common.Unity.Scripts.Common
 
             set
             {
-                var selectables =  GameObject.FindObjectsOfType<Selectable>();
-                selectables.ForEach(s => s.interactable = value);
+                GameObject
+                    .FindObjectsOfType<Selectable>()
+                    .SetInteractable(value);
 
                 _enabled = value;
             }

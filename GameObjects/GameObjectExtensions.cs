@@ -90,6 +90,8 @@ namespace Common.Unity.GameObjects
             return transform.gameObject.GetThisAndNestedChildren<T>();
         }
 
+        public static IEnumerable<T> GetThisAndNestedChildren<T>(this IEnumerable<object> objects) => objects.SelectMany(o => o.GetThisAndNestedChildren<T>());
+
         public static IEnumerable<T> GetThisAndNestedChildren<T>(this object @object)
         {
             if (@object is Component component)
@@ -106,6 +108,7 @@ namespace Common.Unity.GameObjects
         }
 
         public static T GetOrAdd<T>(this object @object)
+            where T : Component
         {
             T c = @object.Get<T>();
             if (c == null)
@@ -115,9 +118,23 @@ namespace Common.Unity.GameObjects
         }
 
         public static T Add<T>(this object @object)
+            where T : Component
         {
             if (@object is Component component)
-                return component.Add<T>();
+                return component.gameObject.AddComponent<T>();
+
+            return default;
+        }
+
+        public static T Remove<T>(this object @object)
+           where T : Component
+        {
+            if (@object is Component component)
+            {
+                var c = component.GetComponent<T>();
+                if (c)
+                    GameObject.Destroy(c);
+            }
 
             return default;
         }
@@ -151,8 +168,13 @@ namespace Common.Unity.GameObjects
             if (@object is Component component)
                 return component.GetComponent<T>();
 
+            if (@object is GameObject gameObject)
+                return gameObject.GetComponent<T>();
+
             return default;
         }
+
+        public static T[] GetComponents<T>(this IEnumerable<object> objects) => objects.Select(o => o.GetComponent<T>()).ToArray();
 
         public static T GetComponentInParent<T>(this object @object)
         {
