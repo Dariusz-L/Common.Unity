@@ -6,6 +6,8 @@ namespace Common.Unity.UI.UMCV
 {
     public class View : MonoBehaviour, IView
     {
+        public string ID { get; set; }
+
         public virtual void Hide() => gameObject.SetActive(false);
         public virtual void Show() => gameObject.SetActive(true);
 
@@ -17,5 +19,7 @@ namespace Common.Unity.UI.UMCV
         public virtual void FitToChildren() => gameObject.FitToLayoutChildren();
 
         T IView.GetParent<T>() => GetComponentInParent<T>();
+
+        IView IView.GetParent() => transform.parent.GetOrAddComponent<View>();
     }
 }

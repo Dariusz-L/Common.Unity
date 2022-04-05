@@ -22,7 +22,7 @@ namespace Common.Unity.UI
 
             inputField.onDeselect.AddListener(text =>
             {
-                DiscardInputFieldAndEnableText(text, destroyInputField, modifiedText);
+                DiscardInputFieldAndEnableText(destroyInputField, modifiedText);
                 onDiscard(text);
             });
 
@@ -34,12 +34,11 @@ namespace Common.Unity.UI
                     onSubmit(text);
                 }
 
-                DiscardInputFieldAndEnableText(text, destroyInputField, modifiedText);
+                DiscardInputFieldAndEnableText(destroyInputField, modifiedText);
             });
         }
 
         public static void DiscardInputFieldAndEnableText(
-            string newText,
             Action trashInputFieldBase,
             TMP_Text modifiedText)
         {
