@@ -1,5 +1,5 @@
 ﻿using Common.Basic.Collections;
-using Common.Basic.Math;
+using Common.Basic.Maths;
 using Common.Unity.Functional;
 using Common.Unity.GameObjects;
 using System;
@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static Common.Basic.Math.LerpingFunctions;
+using static Common.Basic.Maths.LerpingFunctions;
 
 namespace Common.Unity.Components
 {

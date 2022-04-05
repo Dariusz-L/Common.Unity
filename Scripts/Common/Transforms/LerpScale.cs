@@ -1,6 +1,6 @@
 ﻿using Common.Unity.Components;
 using UnityEngine;
-using static Common.Basic.Math.LerpingFunctions;
+using static Common.Basic.Maths.LerpingFunctions;
 
 namespace Common.Unity.Scripts.Common
 {

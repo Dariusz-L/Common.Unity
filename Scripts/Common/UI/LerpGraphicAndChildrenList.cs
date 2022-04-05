@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using static Common.Basic.Math.LerpingFunctions;
+using static Common.Basic.Maths.LerpingFunctions;
 
 namespace Common.Unity.Scripts.Common
 {
