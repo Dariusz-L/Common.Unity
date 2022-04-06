@@ -13,12 +13,9 @@ namespace Common.Unity.UI.UMCV
 
         public virtual bool IsVisible => gameObject.activeSelf;
 
-
         public IView AsParent() => gameObject.GetOrAddComponent<View>();
 
-        public virtual void FitToChildren() => gameObject.FitToLayoutChildren();
-
-        T IView.GetParent<T>() => GetComponentInParent<T>();
+        T IView.GetParent<T>() => this.GetComponentInParentExceptThis<T>();
 
         IView IView.GetParent() => transform.parent.GetOrAddComponent<View>();
     }
