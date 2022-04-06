@@ -15,7 +15,7 @@ namespace Common.Unity.UI.UMCV
 
         public IView AsParent() => gameObject.GetOrAddComponent<View>();
 
-        T IView.GetParent<T>() => this.GetComponentInParentExceptThis<T>();
+        T IView.GetParent<T>() => this.GetComponentInParentButNotThis<T>();
 
         IView IView.GetParent() => transform.parent.GetOrAddComponent<View>();
     }

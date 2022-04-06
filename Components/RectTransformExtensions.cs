@@ -27,6 +27,13 @@ namespace Common.Unity.Components
             return (int) (parentHeight / childHeight);
         }
 
+        public static void AddWidth(this RectTransform rt, float value)
+        {
+            var source = rt.sizeDelta;
+            source.x += value;
+            rt.sizeDelta = source;
+        }
+
         public static void SetWidth(this RectTransform rt, float value)
         {
             var source = rt.sizeDelta;
@@ -116,6 +123,20 @@ namespace Common.Unity.Components
             rt.offsetMin = new Vector2(rt.offsetMin.x, bottom);
         }
 
+        public static void AddAnchoredPositionX(this RectTransform transform, float value)
+        {
+            var position = transform.anchoredPosition;
+            position.x += value;
+            transform.anchoredPosition = position;
+        }
+
+        public static void AddAnchoredPositionY(this RectTransform transform, float value)
+        {
+            var position = transform.anchoredPosition;
+            position.y += value;
+            transform.anchoredPosition = position;
+        }
+
         public static void SetAnchoredPositionX(this RectTransform transform, float value)
         {
             var position = transform.anchoredPosition;
@@ -136,5 +157,7 @@ namespace Common.Unity.Components
 
         public static int GetGroupLeftPadding(this Component component) => component.GetComponent<LayoutGroup>().GetGroupLeftPadding();
         public static int GetGroupLeftPadding(this LayoutGroup lg) => lg.padding.left;
+
+        public static void SetLayoutElementIgnore(this Component component, bool value) => component.GetComponent<LayoutElement>().ignoreLayout = value;
     }
 }

@@ -43,7 +43,8 @@ namespace Common.Unity.GameObjects
             return component.gameObject.GetOrAddComponent<T>();
         }
 
-        public static T GetComponentInParentExceptThis<T>(this Component component) => component.transform.parent.GetComponentInParent<T>();
+        public static T GetComponentInParentButNotThis<T>(this Component component) => component.transform.parent.GetComponentInParent<T>();
+        public static T[] GetComponentsInParentButNotThis<T>(this Component component) => component.transform.parent.GetComponentsInParent<T>();
 
         public static void ForEachNested<T>(this GameObject gameObject, Action<T> action)
         {
