@@ -265,6 +265,8 @@ namespace Common.Unity.GameObjects
         }
 
         public static IEnumerable<T> GetSiblingsAfter<T>(this IEnumerable<Component> components) => components.SelectMany(c => c.GetSiblingsAfter<T>()).ToList();
+        public static int GetSiblingsCount(this Component component) => component.transform.parent.GetChildren<Transform>().Count() - 1;
+        public static int GetSiblingsAndThisCount(this Component component) => component.GetSiblingsCount() + 1;
 
         public static IEnumerable<T> To<T>(this IEnumerable<Component> components) => components.Select(c => c.GetComponent<T>()).ToList();
     }

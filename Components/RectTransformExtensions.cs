@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Common.Unity.Components
 {
@@ -57,30 +56,6 @@ namespace Common.Unity.Components
                 return default;
 
             return heights.Aggregate((x, y) => x + y);
-        }
-
-        public static float GetVerticalLayoutGroupHeightExt(this Component component, int itemsCount)
-            => component.GetComponent<VerticalLayoutGroup>().GetVerticalLayoutGroupHeightExt(itemsCount);
-
-        public static float GetVerticalLayoutGroupHeightExt(this VerticalLayoutGroup lg, int itemsCount)
-        {
-            if (!lg)
-                return 0;
-
-            var spacing = lg.spacing * (itemsCount - 1);
-            if (spacing < 0)
-                spacing = 0;
-
-            return spacing + lg.padding.top + lg.padding.bottom;
-        }
-
-        public static void FitToVerticalLayoutGroup(this Component component, IEnumerable<Component> layoutElements)
-        {
-            var propertiesHeight = layoutElements.GetHeight();
-            var verticalLayoutExt = component.GetVerticalLayoutGroupHeightExt(layoutElements.Count());
-
-            var totalHeight = propertiesHeight + verticalLayoutExt;
-            component.GetComponent<RectTransform>().SetHeight(totalHeight);
         }
 
         public static void SetLeft(this Component rt, float left)
@@ -150,14 +125,5 @@ namespace Common.Unity.Components
             position.y = value;
             transform.anchoredPosition = position;
         }
-
-        public static void SetGroupLeftPadding(this Component component, int value) => component.GetComponent<LayoutGroup>().SetGroupLeftPadding(value);
-
-        public static void SetGroupLeftPadding(this LayoutGroup lg, int value) => lg.padding.left = value;
-
-        public static int GetGroupLeftPadding(this Component component) => component.GetComponent<LayoutGroup>().GetGroupLeftPadding();
-        public static int GetGroupLeftPadding(this LayoutGroup lg) => lg.padding.left;
-
-        public static void SetLayoutElementIgnore(this Component component, bool value) => component.GetComponent<LayoutElement>().ignoreLayout = value;
     }
 }
