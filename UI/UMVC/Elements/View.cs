@@ -18,5 +18,7 @@ namespace Common.Unity.UI.UMCV
         T IView.GetParent<T>() => this.GetComponentInParentButNotThis<T>();
 
         IView IView.GetParent() => transform.parent.GetOrAddComponent<View>();
+
+        public virtual void FitToChildren() {}
     }
 }
