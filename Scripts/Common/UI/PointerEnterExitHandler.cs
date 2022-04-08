@@ -32,10 +32,6 @@ namespace Common.Unity.UI
             _isInside = false;
         }
 
-        public void AddOnPointerEnter(Action<PointerEventData> handler)
-        {
-            _onPointerEnterHandler.AddListener(handler.Invoke);
-        }
 
         public void SetOnPointerEnter(Action<PointerEventData> handler)
         {
@@ -43,15 +39,14 @@ namespace Common.Unity.UI
             AddOnPointerEnter(handler.Invoke);
         }
 
-        public void AddOnPointerExit(Action<PointerEventData> handler)
-        {
-            _onPointerExitHandler.AddListener(handler.Invoke);
-        }
 
         public void SetOnPointerExit(Action<PointerEventData> handler)
         {
             _onPointerExitHandler.RemoveAllListeners();
             AddOnPointerExit(handler.Invoke);
         }
+
+        public void AddOnPointerEnter(Action<PointerEventData> handler) => _onPointerEnterHandler.AddListener(handler.Invoke);
+        public void AddOnPointerExit(Action<PointerEventData> handler) => _onPointerExitHandler.AddListener(handler.Invoke);
     }
 }

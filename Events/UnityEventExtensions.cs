@@ -40,5 +40,11 @@ namespace Common.Unity.Events
                 yield return (target.GetType(), methodName);
             }
         }
+
+        public static void RemoveAllListenersAndAdd<T>(this UnityEvent<T> unityEvent, Action<T> handler)
+        {
+            unityEvent.RemoveAllListeners();
+            unityEvent.AddListener(handler.Invoke);
+        }
     }
 }
