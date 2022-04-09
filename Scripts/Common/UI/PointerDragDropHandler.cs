@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace Common.Unity.UI
 {
+    [Serializable]
     public class PointerDragDropHandler : MonoBehaviour, 
         IBeginDragHandler, IDragHandler, IEndDragHandler
     {

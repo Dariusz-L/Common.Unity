@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Common.Basic.Collections;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,6 +57,16 @@ namespace Common.Unity.Components
         public static int GetGroupRightPadding(this Component component) => component.GetComponent<LayoutGroup>().GetGroupRightPadding();
         public static int GetGroupRightPadding(this LayoutGroup lg) => lg.padding.right;
 
+        public static void SetLayoutElementIgnore(this IEnumerable<object> components, IEnumerable<bool> values)
+            => components.Zip(values, (c, v) => new Tuple<object, bool>(c, v)).ForEach(cv => cv.Item1.SetLayoutElementIgnore(cv.Item2));
+
+        public static void SetLayoutElementIgnore(this IEnumerable<object> components, bool value) => components.Cast<Component>().ForEach(c => c.SetLayoutElementIgnore(value));
+        public static void SetLayoutElementIgnore(this IEnumerable<Component> components, bool value) => components.ForEach(c => c.SetLayoutElementIgnore(value));
+        public static void SetLayoutElementIgnore(this object component, bool value) => (component as Component).SetLayoutElementIgnore(value);
         public static void SetLayoutElementIgnore(this Component component, bool value) => component.GetComponent<LayoutElement>().ignoreLayout = value;
+
+        public static IEnumerable<bool> GetLayoutElementIgnore(this IEnumerable<object> components) => components.Cast<Component>().GetLayoutElementIgnore();
+        public static IEnumerable<bool> GetLayoutElementIgnore(this IEnumerable<Component> components) => components.Select(c => c.GetLayoutElementIgnore());
+        public static bool GetLayoutElementIgnore(this Component component) => component.GetComponent<LayoutElement>().ignoreLayout;
     }
 }

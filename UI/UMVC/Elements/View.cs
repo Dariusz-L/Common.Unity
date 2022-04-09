@@ -1,5 +1,6 @@
 ﻿using Common.Basic.UMVC.Elements;
 using Common.Unity.GameObjects;
+using System.Linq;
 using UnityEngine;
 
 namespace Common.Unity.UI.UMCV
@@ -15,9 +16,10 @@ namespace Common.Unity.UI.UMCV
 
         public IView AsParent() => gameObject.GetOrAddComponent<View>();
 
-        T IView.GetParent<T>() => this.GetComponentInParentButNotThis<T>();
+        public T GetParent<T>() where T : IView => this.GetComponentInParentButNotThis<T>();
+        public T GetParentTopMost<T>() where T : IView => this.GetComponentsInParentButNotThis<T>().Last();
 
-        IView IView.GetParent() => transform.parent.GetOrAddComponent<View>();
+        public IView GetParent() => transform.parent.GetOrAddComponent<View>();
 
         public virtual void FitToChildren() {}
     }
