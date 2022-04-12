@@ -8,6 +8,7 @@ namespace Common.Unity.Components
     {
         public static RectTransform RT(this object @object) => (@object as Component).GetComponent<RectTransform>();
         public static RectTransform RT(this Component component) => component.GetComponent<RectTransform>();
+        public static IEnumerable<RectTransform> RTs(this IEnumerable<object> components) => components.Cast<Component>().RTs();
         public static IEnumerable<RectTransform> RTs(this IEnumerable<Component> components) => components.Select(c => c.RT()).ToList();
 
         public static int GetCountByHeightIn(Component child, Component parent)
@@ -124,6 +125,44 @@ namespace Common.Unity.Components
             var position = transform.anchoredPosition;
             position.y = value;
             transform.anchoredPosition = position;
+        }
+
+        public static Vector2 GetWorldLeftCenter(this RectTransform transform)
+        {
+            var worldRect = transform.GetWorldRect();
+            return new Vector2(worldRect.min.x, worldRect.center.y);
+        }
+
+        public static Vector2 GetWorldRightCenter(this RectTransform transform)
+        {
+            var worldRect = transform.GetWorldRect();
+            return new Vector2(worldRect.max.x, worldRect.center.y);
+        }
+
+        public static Vector2 GetWorldTopCenter(this RectTransform transform)
+        {
+            var worldRect = transform.GetWorldRect();
+            return new Vector2(worldRect.center.x, worldRect.max.y);
+        }
+
+        public static Vector2 GetWorldBottomCenter(this RectTransform transform)
+        {
+            var worldRect = transform.GetWorldRect();
+            return new Vector2(worldRect.center.x, worldRect.min.y);
+        }
+
+        public static Rect GetWorldRect(this RectTransform rectTransform)
+        {
+            Vector3[] corners = new Vector3[4];
+            rectTransform.GetWorldCorners(corners);
+            
+            Vector3 position = corners[0]; // Get the bottom left corner
+
+            Vector2 size = new Vector2(
+                rectTransform.lossyScale.x * rectTransform.rect.size.x,
+                rectTransform.lossyScale.y * rectTransform.rect.size.y);
+
+            return new Rect(position, size);
         }
     }
 }
