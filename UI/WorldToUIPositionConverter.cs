@@ -4,7 +4,12 @@ namespace Common.Unity.UI
 {
     public static class WorldToUIPositionConverter
     {
-        public static Rect WorldToScreenSpace(Vector2 position, Vector2 size, Vector2? scale = null, Vector2 ? pivot = null)
+        public static float ConvertWorldPosYTOScreenSpace(float y, Vector2 size, Vector2? scale = null, Vector2? pivot = null)
+        {
+            return ConvertWorldRectToScreenSpace(new Vector2(0, y), size, scale, pivot).y;
+        }
+
+        public static Rect ConvertWorldRectToScreenSpace(Vector2 position, Vector2 size, Vector2? scale = null, Vector2? pivot = null)
         {
             if (pivot == null)
                 pivot = new Vector2(0.5f, 0.5f);
@@ -21,17 +26,17 @@ namespace Common.Unity.UI
             return rect;
         }
 
-        public static Rect WorldToScreenSpace(Rect rect, Vector2? scale = null, Vector2? pivot = null)
+        public static Rect ConvertWorldRectToScreenSpace(Rect rect, Vector2? scale = null, Vector2? pivot = null)
         {
-            return WorldToScreenSpace(rect.position, rect.size, scale, pivot);
+            return ConvertWorldRectToScreenSpace(rect.position, rect.size, scale, pivot);
         }
 
-        public static Rect WorldToScreenSpace(RectTransform rt)
+        public static Rect ConvertWorldRectToScreenSpace(RectTransform rt)
         {
             var pos = new Vector2(rt.position.x, rt.position.y);
             var size = rt.rect.size;
 
-            return WorldToScreenSpace(pos, size, rt.lossyScale, rt.pivot);
+            return ConvertWorldRectToScreenSpace(pos, size, rt.lossyScale, rt.pivot);
         }
     }
 }
