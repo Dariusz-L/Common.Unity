@@ -44,6 +44,8 @@ namespace Common.Unity.UI
             texture.Apply();
             GUI.skin.box.normal.background = texture;
             GUI.Box(position, GUIContent.none);
+
+            DestroyImmediate(texture);
         }
     }
 }
