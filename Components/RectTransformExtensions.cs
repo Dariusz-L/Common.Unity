@@ -7,6 +7,7 @@ namespace Common.Unity.Components
     public static class RectTransformExtensions
     {
         public static RectTransform RT(this object @object) => (@object as Component).GetComponent<RectTransform>();
+        public static RectTransform RT(this GameObject go) => go.GetComponent<RectTransform>();
         public static RectTransform RT(this Component component) => component.GetComponent<RectTransform>();
         public static IEnumerable<RectTransform> RTs(this IEnumerable<object> components) => components.Cast<Component>().RTs();
         public static IEnumerable<RectTransform> RTs(this IEnumerable<Component> components) => components.Select(c => c.RT()).ToList();
