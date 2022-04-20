@@ -1,19 +1,23 @@
 ﻿using Common.Basic.UMVC.Elements;
 using Common.Unity.Components;
+using Common.Unity.UI.UMCV;
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Common.Unity.UI
 {
     public static class UIInstantiateExtensions
     {
-        public static IButtonView InstantiateAndSetSprite(Button prefab, IView parent, Sprite sprite)
+        public static void Instantiate<TView>(TView prefab, IView parent, Action<IView> onDone)
+            where TView : Component
         {
-            var button = GameObject.Instantiate(prefab, parent.ToTransform());
-            button.SetSprite(sprite);
+            var spawned = GameObject.Instantiate(prefab, parent.ToTransform());
 
-            return button.GetComponent<IButtonView>();
+            var viewInterface = spawned.GetComponent<IView>();
+            if (viewInterface == null)
+                viewInterface = spawned.gameObject.AddComponent<View>();
+
+            onDone(viewInterface);
         }
 
         public static void Instantiate<TView, TViewInterface>(TView prefab, IView parent, Action<TViewInterface> onDone)
