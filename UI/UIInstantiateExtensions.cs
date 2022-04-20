@@ -16,10 +16,12 @@ namespace Common.Unity.UI
             return button.GetComponent<IButtonView>();
         }
 
-        public static void Instantiate(Button prefab, IView parent, Action<IButtonView> onDone)
+        public static void Instantiate<TView, TViewInterface>(TView prefab, IView parent, Action<TViewInterface> onDone)
+            where TView : Component
+            where TViewInterface : IView
         {
-            var button = GameObject.Instantiate(prefab, parent.ToTransform());
-            onDone(button.GetComponent<IButtonView>());
+            var spawned = GameObject.Instantiate(prefab, parent.ToTransform());
+            onDone(spawned.GetComponent<TViewInterface>());
         }
     }
 }
