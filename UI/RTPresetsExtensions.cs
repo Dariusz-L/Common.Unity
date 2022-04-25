@@ -28,6 +28,8 @@ namespace Common.Unity.UI
             rt.offsetMax = new Vector2(0, 0);
 
             rt.pivot = new Vector2(0.5f, 0.5f);
+
+            rt.localScale = new Vector2(1f, 1f);
         }
 
         public static void StretchToMiddle(this RectTransform rt)

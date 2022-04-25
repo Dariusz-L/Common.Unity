@@ -15,22 +15,14 @@ namespace Common.Unity.Scripts.Common
                 Setup();
         }
 
-
-        public void Setup()
-        {
+        public void Setup() =>
             _mainThreadQueue = new UnityThreadQueue();
-        }
 
-        private void Update()
-        {
-            if (_mainThreadQueue != null)
-                _mainThreadQueue.Execute(int.MaxValue, Time.deltaTime);
-        }
+        private void Update() =>
+            _mainThreadQueue?.Execute(int.MaxValue, Time.deltaTime);
 
-        public static void Run(Action action, float delayTimeSeconds = 0)
-        {
+        public static void Run(Action action, float delayTimeSeconds = 0) =>
             _mainThreadQueue.SetAction(action, delayTimeSeconds);
-        }
 
         public static bool IsEmpty => _mainThreadQueue.IsEmpty;
     }

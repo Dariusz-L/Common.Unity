@@ -22,5 +22,7 @@ namespace Common.Unity.UI.UMCV
         public IView GetParent() => transform.parent.GetOrAddComponent<View>();
 
         public virtual void FitToChildren() {}
+
+        T[] IView.GetChildren<T>() => this.GetChildren<T>().ToArray();
     }
 }
