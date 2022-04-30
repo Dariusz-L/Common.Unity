@@ -1,4 +1,5 @@
 ﻿using Common.Basic.Collections;
+using Common.Unity.Components;
 using System;
 using TMPro;
 
@@ -13,7 +14,7 @@ namespace Common.Unity.UI
            Action<string> onSubmit,
            Action<string> onDiscard)
         {
-            modifiedText.enabled = false;
+            modifiedText.ModifyChannel(3, 0);
 
             var inputField = createInputField();
             inputField.text = modifiedText.text;
@@ -43,7 +44,7 @@ namespace Common.Unity.UI
             TMP_Text modifiedText)
         {
             trashInputFieldBase();
-            modifiedText.enabled = true;
+            modifiedText.ModifyChannel(3, 1);
         }
     }
 }
