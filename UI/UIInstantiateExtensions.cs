@@ -20,12 +20,14 @@ namespace Common.Unity.UI
             onDone(viewInterface);
         }
 
-        public static void Instantiate<TView, TViewInterface>(TView prefab, IView parent, Action<TViewInterface> onDone)
+        public static bool Instantiate<TView, TViewInterface>(TView prefab, IView parent, Action<TViewInterface> onDone)
             where TView : Component
             where TViewInterface : IView
         {
             var spawned = GameObject.Instantiate(prefab, parent.ToTransform());
             onDone(spawned.GetComponent<TViewInterface>());
+
+            return true;
         }
     }
 }

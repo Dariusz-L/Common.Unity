@@ -20,7 +20,7 @@ namespace Common.Unity.UI
                 scale = new Vector2(1f, 1f);
 
             Vector2 sizeScaled = Vector2.Scale(size, scale.Value);
-            Rect rect = new Rect(position.x, Screen.height - position.y, sizeScaled.x, sizeScaled.y);
+            Rect rect = new Rect(position.x, position.y, sizeScaled.x, sizeScaled.y);
 
             rect.x -= (pivot.Value.x * sizeScaled.x);
             rect.y -= ((1.0f - pivot.Value.y) * sizeScaled.y);
@@ -72,10 +72,10 @@ namespace Common.Unity.UI
             return rt.GetWorldRect(new Vector2(rt.rect.size.x, newSizeY), new Vector2(0, shrinkSizeY));
         }
 
-        public static Rect GetScreenRect(this RectTransform rt)
+        public static Rect GetScreenRect(this RectTransform rt, Vector2? scale = null, Vector2? pivot = null)
         {
             var worldRect = rt.GetWorldRect();
-            return worldRect.WorldToScreenRect();
+            return worldRect.WorldToScreenRect(scale, pivot);
         }
 
         public static Rect GetScreenRectResizedAndShrinkedY(this RectTransform rt, float newBaseSizeY, float shrinkSizeY)
