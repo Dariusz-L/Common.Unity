@@ -1,4 +1,5 @@
 ﻿using Common.Basic.Collections;
+using Common.Unity.GameObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,19 @@ namespace Common.Unity.Components
 
             var totalHeight = propertiesHeight + verticalLayoutExt;
             component.GetComponent<RectTransform>().SetHeight(totalHeight);
+        }
+        public static void FitToVerticalLayoutGroup<TLayoutItem>(this TLayoutItem layoutGroupParent, Component layoutGroup)
+            where TLayoutItem : Component
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layoutGroup.RT());
+
+            var items = layoutGroup.GetChildren<TLayoutItem>();
+            var propertiesHeight = items.GetHeight();
+            var verticalLayoutExt = layoutGroupParent.GetVerticalLayoutGroupHeightExt(0);
+            verticalLayoutExt += layoutGroup.GetVerticalLayoutGroupHeightExt(items.Count());
+
+            var totalHeight = propertiesHeight + verticalLayoutExt;
+            layoutGroupParent.RT().SetHeight(totalHeight + 25);
         }
 
         public static void FitRectLeftRightToLayoutGroup(this object @object) => ((Component) @object).FitRectLeftRightToLayoutGroup();

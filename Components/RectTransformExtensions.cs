@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Common.Unity.GameObjects;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -59,6 +60,37 @@ namespace Common.Unity.Components
 
             return heights.Aggregate((x, y) => x + y);
         }
+
+        public static float GetHeightOfBiggestChild(this RectTransform rt)
+        {
+            var children = rt.GetChildren<RectTransform>();
+            var heights = children.Select(rt => rt.rect.height);
+            var heightsOrdered = heights.OrderByDescending(x => x);
+
+            return heightsOrdered.FirstOrDefault();
+        }
+
+        public static float GetHeightOfChildrenByRects(this RectTransform rt)
+        {
+            var children = rt.GetChildren<RectTransform>();
+
+            var yMins = children.Select(rt => rt.rect.yMin).ToArray();
+            var yMinsOrdered = yMins.OrderByDescending(x => x).Reverse().ToArray();
+
+            var yMaxs = children.Select(rt => rt.rect.yMax).ToArray();
+            var yMaxsOrdered = yMaxs.OrderByDescending(x => x).ToArray();
+
+            var yMin = yMinsOrdered.FirstOrDefault();
+            var yMax = yMaxsOrdered.FirstOrDefault();
+
+            return yMax - yMin;
+        }
+
+        public static float GetHeightOfChildrenByCount(this Component component) =>
+           component.GetComponent<RectTransform>().GetHeightOfChildrenByCount();
+
+        public static float GetHeightOfChildrenByCount(this RectTransform rt) =>
+            rt.GetChildren<RectTransform>().GetHeight();
 
         public static void SetLeft(this Component rt, float left)
         {
