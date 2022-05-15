@@ -38,7 +38,7 @@ namespace Common.Unity.Components
         {
             LayoutRebuilder.ForceRebuildLayoutImmediate(layoutGroup.RT());
 
-            var items = layoutGroup.GetChildren<TLayoutItem>();
+            var items = layoutGroup.GetChildren<TLayoutItem>(includeInactive: false);
             var propertiesHeight = items.GetHeight();
             var verticalLayoutExt = layoutGroupParent.GetVerticalLayoutGroupHeightExt(0);
             verticalLayoutExt += layoutGroup.GetVerticalLayoutGroupHeightExt(items.Count());

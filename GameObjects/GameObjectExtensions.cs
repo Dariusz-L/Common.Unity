@@ -252,12 +252,15 @@ namespace Common.Unity.GameObjects
             return Array.Empty<T>();
         }
 
-        public static IEnumerable<T> GetChildren<T>(this GameObject gameObject) => GetChildren<T>(gameObject.transform);
+        public static IEnumerable<T> GetChildren<T>(this GameObject gameObject, bool includeInactive = true) => GetChildren<T>(gameObject.transform, includeInactive);
 
-        public static IEnumerable<T> GetChildren<T>(this Component component)
+        public static IEnumerable<T> GetChildren<T>(this Component component, bool includeInactive = true)
         {
             foreach (Transform t in component.transform)
             {
+                if (!includeInactive && !t.gameObject.activeSelf)
+                    continue;
+                
                 T child = t.GetComponent<T>();
                 if (child != null)
                     yield return child;
