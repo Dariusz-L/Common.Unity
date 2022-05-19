@@ -1,4 +1,5 @@
 ﻿using Common.Basic.UMVC.Elements;
+using Common.Unity.Components;
 using Common.Unity.GameObjects;
 using System.Linq;
 using UnityEngine;
@@ -7,6 +8,8 @@ namespace Common.Unity.UI.UMCV
 {
     public class View : MonoBehaviour, IView
     {
+        public RectTransform RT => this.RT();
+
         public string ID { get; set; }
 
         public virtual void Hide() => gameObject.SetActive(false);

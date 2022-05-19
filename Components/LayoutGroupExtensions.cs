@@ -10,10 +10,10 @@ namespace Common.Unity.Components
 {
     public static class LayoutGroupExtensions
     {
-        public static float GetVerticalLayoutGroupHeightExt(this Component component, int itemsCount)
-            => component.GetComponent<VerticalLayoutGroup>().GetVerticalLayoutGroupHeightExt(itemsCount);
+        public static float GetLayoutGroupHeightExt(this Component component, int itemsCount)
+            => component.GetComponent<VerticalLayoutGroup>().GetLayoutGroupHeightExt(itemsCount);
 
-        public static float GetVerticalLayoutGroupHeightExt(this VerticalLayoutGroup lg, int itemsCount)
+        public static float GetLayoutGroupHeightExt(this HorizontalOrVerticalLayoutGroup lg, int itemsCount)
         {
             if (!lg)
                 return 0;
@@ -22,26 +22,32 @@ namespace Common.Unity.Components
             if (spacing < 0)
                 spacing = 0;
 
-            return spacing + lg.padding.top + lg.padding.bottom;
+            if (lg is VerticalLayoutGroup)
+                return spacing + lg.padding.top + lg.padding.bottom;
+
+            if (lg is HorizontalLayoutGroup)
+                return spacing + lg.padding.right + lg.padding.left;
+
+            return spacing;
         }
 
-        public static void FitToVerticalLayoutGroup(this Component component, IEnumerable<Component> layoutElements)
+        public static void FitToLayoutGroup(this Component component, IEnumerable<Component> layoutElements)
         {
             var propertiesHeight = layoutElements.GetHeight();
-            var verticalLayoutExt = component.GetVerticalLayoutGroupHeightExt(layoutElements.Count());
+            var verticalLayoutExt = component.GetLayoutGroupHeightExt(layoutElements.Count());
 
             var totalHeight = propertiesHeight + verticalLayoutExt;
             component.GetComponent<RectTransform>().SetHeight(totalHeight);
         }
-        public static void FitToVerticalLayoutGroup<TLayoutItem>(this TLayoutItem layoutGroupParent, Component layoutGroup)
+        public static void FitToLayoutGroup<TLayoutItem>(this TLayoutItem layoutGroupParent, Component layoutGroup)
             where TLayoutItem : Component
         {
             LayoutRebuilder.ForceRebuildLayoutImmediate(layoutGroup.RT());
 
             var items = layoutGroup.GetChildren<TLayoutItem>(includeInactive: false);
             var propertiesHeight = items.GetHeight();
-            var verticalLayoutExt = layoutGroupParent.GetVerticalLayoutGroupHeightExt(0);
-            verticalLayoutExt += layoutGroup.GetVerticalLayoutGroupHeightExt(items.Count());
+            var verticalLayoutExt = layoutGroupParent.GetLayoutGroupHeightExt(0);
+            verticalLayoutExt += layoutGroup.GetLayoutGroupHeightExt(items.Count());
 
             var totalHeight = propertiesHeight + verticalLayoutExt;
             layoutGroupParent.RT().SetHeight(totalHeight + 25);
