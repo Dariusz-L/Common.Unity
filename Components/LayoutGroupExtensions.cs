@@ -11,7 +11,7 @@ namespace Common.Unity.Components
     public static class LayoutGroupExtensions
     {
         public static float GetLayoutGroupHeightExt(this Component component, int itemsCount)
-            => component.GetComponent<VerticalLayoutGroup>().GetLayoutGroupHeightExt(itemsCount);
+            => component.GetComponent<HorizontalOrVerticalLayoutGroup>().GetLayoutGroupHeightExt(itemsCount);
 
         public static float GetLayoutGroupHeightExt(this HorizontalOrVerticalLayoutGroup lg, int itemsCount)
         {
