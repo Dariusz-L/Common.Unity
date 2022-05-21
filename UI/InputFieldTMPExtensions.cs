@@ -34,6 +34,8 @@ namespace Common.Unity.UI
                     modifiedText.text = text;
                     onSubmit(text);
                 }
+                else
+                    onDiscard(text);
 
                 DiscardInputFieldAndEnableText(destroyInputField, modifiedText);
             });
