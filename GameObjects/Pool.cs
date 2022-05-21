@@ -82,16 +82,19 @@ namespace Common.Unity.GameObjects
             _last = null;
         }
 
-        public void DestroyAt(int index)
+        public bool DestroyAt(int index)
         {
             if (!_active.IsIndexInRange(index))
-                return;
+                return false;
 
-            _active[index]
-                .Then(i => i.gameObject.SetActive(false))
-                .Then(i => i.transform.parent = _parent)
-                .Then(i => _active.RemoveAt(index))
-                .Then(i => _last = _active.LastOrDefault());
+            var active = _active[index];
+            active.gameObject.SetActive(false);
+            active.transform.parent = _parent;
+
+            _active.RemoveAt(index);
+            _last = _active.LastOrDefault();
+
+            return true;
         }
 
         public void DestroyAt(IEnumerable<int> indexes)
@@ -104,11 +107,13 @@ namespace Common.Unity.GameObjects
             spawnedItems.ForEach(i => Destroy(i));
         }
 
-        public void Destroy(T spawnedItem)
+        public bool Destroy(T spawnedItem)
         {
-            _active
-                .IndexOf(spawnedItem)
-                .Then(i => DestroyAt(i));
+            var i = _active.IndexOf(spawnedItem);
+            if (i < 0)
+                return false;
+
+            return DestroyAt(i);
         }
 
         public void ForEach(Action<T> action)
