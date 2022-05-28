@@ -1,5 +1,4 @@
 ﻿using Common.Basic.Collections;
-using Common.Basic.Functional;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,14 @@ using UnityEngine;
 
 namespace Common.Unity.GameObjects
 {
-    public class Pool<T> 
+    public interface IPool<out T>
+        where T : Component
+    {
+        public T Spawn(Transform parent);
+        bool Destroy(Transform spawnedTransform);
+    }
+
+    public class Pool<T> : IPool<T>
         where T : Component
     {
         private readonly T _prefab;
@@ -45,14 +51,19 @@ namespace Common.Unity.GameObjects
                 return GameObject.Instantiate(_prefab);
         }
 
-        public T Spawn(bool active = true)
+        public T Spawn(Transform parent) => Spawn(active: true, parent: parent);
+        public T Spawn(bool active = true, Transform parent = null)
         {
             var nextInPool = _pool.Peek();
 
             bool isAlreadyActive = _active.Contains(nextInPool);
             T i = isAlreadyActive ? Instantiate() : _pool.Dequeue();
 
-            return AddToCollectionsAndSet(i, active);
+            T spawned = AddToCollectionsAndSet(i, active);
+            if (parent)
+                spawned.transform.parent = parent;
+
+            return spawned;
         }
 
         public IEnumerable<T> Spawn(int count, bool active = true) =>
@@ -114,6 +125,15 @@ namespace Common.Unity.GameObjects
                 return false;
 
             return DestroyAt(i);
+        }
+
+        public bool Destroy(Transform spawnedTransform)
+        {
+            var item = spawnedTransform.GetComponent<T>();
+            if (item == null)
+                return false;
+
+            return Destroy(item);
         }
 
         public void ForEach(Action<T> action)

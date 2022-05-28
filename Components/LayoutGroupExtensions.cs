@@ -39,6 +39,7 @@ namespace Common.Unity.Components
             var totalHeight = propertiesHeight + verticalLayoutExt;
             component.GetComponent<RectTransform>().SetHeight(totalHeight);
         }
+
         public static void FitToLayoutGroup<TLayoutItem>(this TLayoutItem layoutGroupParent, Component layoutGroup)
             where TLayoutItem : Component
         {
@@ -51,6 +52,27 @@ namespace Common.Unity.Components
 
             var totalHeight = propertiesHeight + verticalLayoutExt;
             layoutGroupParent.RT().SetHeight(totalHeight + 25);
+        }
+
+        public static void FitToLayoutGroup<T>(this T component, Func<T, Transform> getLayout)
+            where T : Component
+        {
+            var rt = component.GetComponent<RectTransform>();
+
+            var layout = getLayout(component);
+            rt.FitToLayoutGroup(layout);
+
+            var parentComponent = component.GetComponentInParentButNotThis<T>();
+            if (parentComponent != null)
+            {
+                var parentLayout = getLayout(parentComponent);
+                parentComponent.FitToLayoutGroup(parentLayout);
+            }
+            else
+            {
+                var parentRT = rt.parent.RT();
+                parentRT.FitToLayoutGroup(parentRT);
+            }
         }
 
         public static void FitRectLeftRightToLayoutGroup(this object @object) => ((Component) @object).FitRectLeftRightToLayoutGroup();
