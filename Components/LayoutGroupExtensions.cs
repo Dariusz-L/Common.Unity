@@ -40,12 +40,19 @@ namespace Common.Unity.Components
             component.GetComponent<RectTransform>().SetHeight(totalHeight);
         }
 
+        public static void FitParentToItsLayoutGroup<TLayoutItem>(this TLayoutItem layoutGroupParent)
+            where TLayoutItem : Component
+        {
+            var parent = layoutGroupParent.transform.parent;
+            parent.FitToLayoutGroup(parent);
+        }
+
         public static void FitToLayoutGroup<TLayoutItem>(this TLayoutItem layoutGroupParent, Component layoutGroup)
             where TLayoutItem : Component
         {
             LayoutRebuilder.ForceRebuildLayoutImmediate(layoutGroup.RT());
 
-            var items = layoutGroup.GetChildren<TLayoutItem>(includeInactive: false);
+            var items = layoutGroup.GetChildren<TLayoutItem>(includeInactive: false).ToArray();
             var propertiesHeight = items.GetHeight();
             var verticalLayoutExt = layoutGroupParent.GetLayoutGroupHeightExt(0);
             verticalLayoutExt += layoutGroup.GetLayoutGroupHeightExt(items.Count());

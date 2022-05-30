@@ -120,7 +120,7 @@ namespace Common.Unity.GameObjects
 
         public bool Destroy(T spawnedItem)
         {
-            var i = _active.IndexOf(spawnedItem);
+            var i = _active.FindIndex(item => GameObject.ReferenceEquals(item.gameObject, spawnedItem.gameObject));
             if (i < 0)
                 return false;
 

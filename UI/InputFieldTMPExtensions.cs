@@ -8,6 +8,18 @@ namespace Common.Unity.UI
     public static class InputFieldTMPExtensions
     {
         public static void SpawnInputField(
+            Func<TMP_InputField> createInputField,
+            TMP_Text modifiedText)
+        {
+            modifiedText.ModifyChannel(3, 0);
+
+            var inputField = createInputField();
+            inputField.text = modifiedText.text;
+            inputField.onFocusSelectAll = true;
+            inputField.ActivateInputField();
+        }
+
+        public static void SpawnInputField(
            Func<TMP_InputField> createInputField,
            Action destroyInputField,
            TMP_Text modifiedText,

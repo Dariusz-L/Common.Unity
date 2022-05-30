@@ -197,5 +197,23 @@ namespace Common.Unity.Components
 
             return new Rect(position, size);
         }
+
+        public static void SetRectTo(this Component rt, Component toRT) => rt.RT().SetRectTo(toRT.RT());
+        public static void SetRectTo(this RectTransform rt, RectTransform toRT)
+        {
+            rt.anchoredPosition = toRT.anchoredPosition;
+
+            rt.anchorMin = toRT.anchorMin;
+            rt.anchorMax = toRT.anchorMax;
+
+            rt.offsetMin = toRT.offsetMin;
+            rt.offsetMax = toRT.offsetMax;
+
+            rt.pivot = toRT.pivot;
+
+            rt.localScale = toRT.localScale;
+
+            rt.sizeDelta = toRT.sizeDelta;
+        }
     }
 }
