@@ -34,6 +34,16 @@ namespace Common.Unity.Components
 
         public static int GetSiblingsAndThisCount(this Component component) => component.GetSiblingsCount() + 1;
 
+        public static void SetSiblingIndexFromAndIncreaseByOne(this Component component, Component siblingIndexSourceComponent) =>
+            component.transform.SetSiblingIndexFromAndIncreaseByOne(siblingIndexSourceComponent.transform);
+
+        public static void SetSiblingIndexFromAndIncreaseByOne(this Transform transform, Transform siblingIndexSource)
+        {
+            var sourceSiblingIndex = siblingIndexSource.GetSiblingIndex();
+            transform.SetSiblingIndex(sourceSiblingIndex + 1);
+            transform.ReactivateParent();
+        }
+
         public static void IncreaseSiblingIndexAndReactivateParent(this Transform transform)
         {
             transform.IncreaseSiblingIndexByOne();
