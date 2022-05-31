@@ -17,6 +17,11 @@ namespace Common.Unity.UI
             inputField.text = modifiedText.text;
             inputField.onFocusSelectAll = true;
             inputField.ActivateInputField();
+
+            inputField.onValueChanged.AddListener(text =>
+            {
+                modifiedText.text = text;
+            });
         }
 
         public static void SpawnInputField(
