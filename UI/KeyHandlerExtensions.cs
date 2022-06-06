@@ -24,7 +24,7 @@ namespace Common.Unity.UI
 
             var canvas = newParent.CreateCanvas();
             canvas.overrideSorting = true;
-            canvas.sortingOrder = short.MaxValue;
+            canvas.sortingOrder = 100;
 
             Canvas.ForceUpdateCanvases();
 

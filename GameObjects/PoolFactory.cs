@@ -16,6 +16,8 @@ namespace Common.Unity.GameObjects
         public virtual T Create(Transform parent) =>
             _pool.Spawn(parent);
 
+        public void DestroyAll() => _pool.DestroyAll();
+
         public Pool<T> Pool => _pool;
     }
 }
