@@ -31,6 +31,17 @@ namespace Common.Unity.Components
             return spacing;
         }
 
+        public static float GetLayoutHeight(this Component component)
+        {
+            var contentChildren = component.GetChildren<RectTransform>();
+            var propertiesHeight = contentChildren.GetHeight();
+            var verticalLayoutExt = component.GetLayoutGroupHeightExt(contentChildren.Count());
+
+            var totalHeight = propertiesHeight + verticalLayoutExt;
+
+            return totalHeight;
+        }
+
         public static void FitToLayoutGroup(this Component component, IEnumerable<Component> layoutElements)
         {
             var propertiesHeight = layoutElements.GetHeight();
