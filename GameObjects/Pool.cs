@@ -28,7 +28,7 @@ namespace Common.Unity.GameObjects
             if (i < 0)
                 return false;
 
-            GameObject.Destroy(_spawned[i]);
+            GameObject.Destroy(_spawned[i].gameObject);
             _spawned.RemoveAt(i);
 
             return true;
