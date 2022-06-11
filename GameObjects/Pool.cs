@@ -9,8 +9,46 @@ namespace Common.Unity.GameObjects
     public interface IPool<out T>
         where T : Component
     {
-        public T Spawn(Transform parent);
+        T Spawn(Transform parent);
         bool Destroy(Transform spawnedTransform);
+        void DestroyAll();
+    }
+
+    public class NotAPool<T> : IPool<T>
+        where T : Component
+    {
+        private readonly T _prefab;
+        private readonly List<T> _spawned = new List<T>();
+
+        public NotAPool(T prefab) => _prefab = prefab;
+
+        bool IPool<T>.Destroy(Transform spawnedTransform)
+        {
+            var i = _spawned.FindIndex(item => GameObject.ReferenceEquals(item.gameObject, spawnedTransform.gameObject));
+            if (i < 0)
+                return false;
+
+            GameObject.Destroy(_spawned[i]);
+            _spawned.RemoveAt(i);
+
+            return true;
+        }
+
+        void IPool<T>.DestroyAll()
+        {
+            foreach (var s in _spawned)
+                GameObject.Destroy(s.gameObject);
+
+            _spawned.Clear();
+        }
+
+        T IPool<T>.Spawn(Transform parent)
+        {
+            var spawned = GameObject.Instantiate(_prefab, parent);
+            _spawned.Add(spawned);
+
+            return spawned;
+        }
     }
 
     public class Pool<T> : IPool<T>
@@ -99,6 +137,10 @@ namespace Common.Unity.GameObjects
                 return false;
 
             var active = _active[index];
+
+            GameObject.Destroy(active.gameObject);
+            return true;
+
             active.gameObject.SetActive(false);
             active.transform.parent = _parent;
 
