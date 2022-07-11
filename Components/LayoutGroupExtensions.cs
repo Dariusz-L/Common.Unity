@@ -103,6 +103,25 @@ namespace Common.Unity.Components
         public static void FitRectLeftToLayoutGroup(this Component c) => c.SetLeft(c.GetGroupLeftPadding());
         public static void FitRectRightToLayoutGroup(this Component c) => c.SetRight(c.GetGroupRightPadding());
 
+        public static void SetChildExpand(this Component component, bool value) => component.GetComponent<HorizontalOrVerticalLayoutGroup>().SetChildExpand(value);
+        public static void SetChildExpand(this HorizontalOrVerticalLayoutGroup component, bool value)
+        {
+            component.childForceExpandHeight = value;
+            component.childForceExpandWidth = value;
+        }
+
+        public static bool GetChildExpand(this Component component)
+        {
+            var layout = component.GetComponent<HorizontalOrVerticalLayoutGroup>();
+            if (layout is VerticalLayoutGroup)
+                return layout.childForceExpandHeight;
+
+            return layout.childForceExpandWidth;
+        }
+
+        public static TextAnchor GetGroupAlignment(this Component component) => component.GetComponent<LayoutGroup>().childAlignment;
+        public static void SetGroupAlignment(this Component component, TextAnchor value) => component.GetComponent<LayoutGroup>().childAlignment = value;
+
         public static void SetGroupLeftPadding(this Component component, int value) => component.GetComponent<LayoutGroup>().SetGroupLeftPadding(value);
 
         public static void SetGroupLeftPadding(this LayoutGroup lg, int value) => lg.padding.left = value;

@@ -49,10 +49,10 @@ namespace Common.Unity.UI
                 if (!inputField.text.IsEmpty() && text != modifiedText.text)
                 {
                     modifiedText.text = text;
-                    onSubmit(text);
+                    onSubmit?.Invoke(text);
                 }
                 else
-                    onDiscard(text);
+                    onDiscard?.Invoke(text);
 
                 DiscardInputFieldAndEnableText(destroyInputField, modifiedText);
             });
