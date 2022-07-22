@@ -24,7 +24,14 @@ namespace Common.Unity.GameObjects
 
         bool IPool<T>.Destroy(Transform spawnedTransform)
         {
-            var i = _spawned.FindIndex(item => GameObject.ReferenceEquals(item.gameObject, spawnedTransform.gameObject));
+            var i = _spawned.FindIndex(item =>
+            {
+                if (!item || !item.gameObject)
+                    return false;
+
+                return GameObject.ReferenceEquals(item.gameObject, spawnedTransform.gameObject);
+            });
+
             if (i < 0)
                 return false;
 
