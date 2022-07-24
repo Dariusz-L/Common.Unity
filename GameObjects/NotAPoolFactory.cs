@@ -6,8 +6,6 @@ namespace Common.Unity.GameObjects
         where T : Component
     {
         [SerializeField] private T _prefab;
-        [SerializeField] private Transform _poolParent;
-        [SerializeField] private int _count = 1000;
         private IPool<T> _pool;
 
         protected virtual void Awake() =>
